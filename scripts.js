@@ -62,6 +62,7 @@ let _main = async function(){
 		xhttp.addEventListener('error', async function(){
 			toast("Server connection failed!");
 		});
+		xhttp.withCredentials = true;
 		return xhttp;
 	};
 	
