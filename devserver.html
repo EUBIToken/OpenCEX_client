@@ -15,11 +15,12 @@
 				</ul>
 			</div>
 		</nav>
-		<h5>Negative Balance Protection</h5>
-		<h6>When you trade using margin, or enter short positions, you run the risk of losing more than what you deposited, and going into huge amounts of debts.</h6>
-		<h6>We guarantee that this will never happen to you by offering negative balance protection.</h6>
-		<h6>On rare occasions, market conditions could cause your Equity to become negative. In these cases, we will perform a margin call: we will close all your open trades. As part of our policy of Negative Balance Protection, we will then absorb the loss and reset your Equity to zero.</h6>
-		<h6>Negative Balance Protection is not a replacement for proper trading strategies. If you want to learn how to trade, please visit <a href="https://www.youtube.com/channel/UCGL9ubdGcvZh_dvSV2z1hoQ">the trading channel</a>.</h6>
+		<h5>Dev server</h5>
+		<h6>Normally, clients use the production server to trade, and we use the dev server to test new features. Accounts cannot be opened on the dev server, and must be manually created by our database administrators. Also, the dev server uses a seperate database and cryptocurrency wallet from the production server.</h6>
+		<div class="row">
+			<button class="btn waves-effect waves-light col l6 m12 s12" onclick="localStorage.removeItem('OpenCEX_devserver')">Use production server</button>
+			<button class="btn waves-effect waves-light col l6 m12 s12" onclick="localStorage.setItem('OpenCEX_devserver', '')">Use dev server</button>
+		</div>
 		
 	</body>
 </html>
