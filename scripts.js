@@ -1,6 +1,7 @@
 "use strict";
 let _main = async function(){
 	const useDevServer = localStorage.getItem("OpenCEX_devserver") !== null;
+	smartGetElementById("devserverstatus").style.display = useDevServer ? "list-item" : "none";
 	let tempfunc;
 	{
 		const map = {
@@ -308,7 +309,7 @@ let _main = async function(){
 						
 						smartGetElementById("FinalizeTokenDeposit").onclick = async function(){
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '"}}]'].join("")), async function(){
-								toast("deposit completed!");
+								toast("Thank you for your deposit! It will be credited to your account after 2 confirmations.");
 							});
 						};
 					};
