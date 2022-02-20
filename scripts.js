@@ -1,7 +1,7 @@
 "use strict";
 let _main = async function(){
 	const useDevServer = localStorage.getItem("OpenCEX_devserver") !== null;
-	smartGetElementById("devserverstatus").style.display = (useDevServer ? "list-item" : "none");
+	
 	let tempfunc;
 	{
 		const map = {
@@ -51,6 +51,7 @@ let _main = async function(){
 	}
 	const smartGetElementById = tempfunc;
 	tempfunc = undefined;
+	smartGetElementById("devserverstatus").style.display = (useDevServer ? "list-item" : "none");
 	
 	const toast = async function(text){
 		M.toast({html: text});
