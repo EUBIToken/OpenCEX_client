@@ -1,7 +1,7 @@
 "use strict";
 let _main = async function(){
 	const useDevServer = localStorage.getItem("OpenCEX_devserver") !== null;
-	smartGetElementById("devserverstatus").style.display = useDevServer ? "list-item" : "none";
+	smartGetElementById("devserverstatus").style.display = (useDevServer ? "list-item" : "none");
 	let tempfunc;
 	{
 		const map = {
