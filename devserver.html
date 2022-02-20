@@ -11,7 +11,7 @@
 			<div class="nav-wrapper">
 				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
 				<ul id="nav-mobile" class="right">
-					<li id="devserverstatus"><a href="devserver.html">Connected to dev server</a></li>
+					<li id="devserverstatus">Connected to dev server</li>
 					<li><a href="index.html">Back</a></li>
 				</ul>
 			</div>
@@ -20,7 +20,7 @@
 		<h6>Normally, clients use the production server to trade, and we use the dev server to test new features. Accounts cannot be opened on the dev server, and must be manually created by our database administrators. Also, the dev server uses a seperate database and cryptocurrency wallet from the production server.</h6>
 		<div class="row">
 			<button class="btn waves-effect waves-light col l6 m12 s12" onclick="localStorage.removeItem('OpenCEX_devserver')">Use production server</button>
-			<button class="btn waves-effect waves-light col l6 m12 s12" onclick="localStorage.setItem('OpenCEX_devserver', '')">Use dev server</button>
+			<button class="btn waves-effect waves-light col l6 m12 s12" onclick="localStorage.setItem('OpenCEX_devserver', ' ')">Use dev server</button>
 		</div>
 		
 	</body>
