@@ -274,6 +274,75 @@ let _main = async function(){
 				toast("Order placed successfully!");
 			});
 		};
+		{
+			//Setup trading chart
+			const barCount = 60;
+			const initialDateStr = '01 Apr 2017 00:00 Z';
+
+			const ctx = document.getElementById('tradingchart').getContext('2d');
+			ctx.canvas.width = 1000;
+			ctx.canvas.height = 250;
+
+			const barData = [];
+			let close = Math.random() * 100;
+			const randomNumber = function(low, high){
+				return low + (Math.random() * (high - low));
+			};
+			for(let c = 1; c < 60; c++){
+				let open = +randomNumber(close * 0.95, close * 1.05).toFixed(2);
+				close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
+				let high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
+				let low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
+				barData.push({
+					x: c,
+					o: open,
+					h: high,
+					l: low,
+					c: close
+				});
+			}
+			function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
+			Chart.defaults.color = "#FFFFFF";
+			const chart = new Chart(ctx, {
+				type: 'candlestick',
+				data: {
+					datasets: [{
+						label: 'CHRT - Chart.js Corporation',
+						data: barData,
+						type: 'candlestick',
+						color: {
+							up: '#00FF00',
+							down: '#FF0000',
+							unchanged: '#FFFFFF',
+						},
+						borderColor: {
+							up: '#FFFFFF',
+							down: '#FFFFFF',
+							unchanged: '#FFFFFF',
+						}
+						
+					}]
+				}
+			});
+			chart.config.options.scales.y.type = 'linear';
+
+			const update = function() {
+				const dataset = chart.config.data.datasets[0];
+				
+
+				chart.update();
+			};
+			/*
+			document.getElementById('update').addEventListener('click', update);
+
+			document.getElementById('randomizeData').addEventListener('click', function() {
+				barData = getRandomData(initialDateStr, barCount);
+				update();
+			});
+			
+			*/
+			
+		}
 	});
 	callIfExists("balances_manager", async function(){
 		//Unload unused Web3 modules
