@@ -251,16 +251,58 @@ let _main = async function(){
 		const copied_web3_conv2wei = Web3.utils.toWei;
 		Web3 = undefined;
 		
-		
 		let selected_pri = "shitcoin";
 		let selected_sec = "scamcoin";
 		let chartLabel = "shitcoin/scamcoin";
 		let barData = [];
+		let _updateChartIMPL;
+		{
+			//Setup trading chart
+			const ctx = document.getElementById('tradingchart').getContext('2d');
+
+			Chart.defaults.color = "#FFFFFF";
+			const chart = new Chart(ctx, {
+				type: 'candlestick',
+				data: {
+					datasets: [{
+						label: chartLabel,
+						data: barData,
+						type: 'candlestick',
+						color: {
+							up: '#00FF00',
+							down: '#FF0000',
+							unchanged: '#FFFFFF',
+						},
+						borderColor: {
+							up: '#FFFFFF',
+							down: '#FFFFFF',
+							unchanged: '#FFFFFF',
+						}
+						
+					}]
+				}
+			});
+			chart.config.options.scales.y.type = 'linear';
+
+			_updateChartIMPL = async function() {
+				chart.config.data.datasets = [
+					{
+						label: chartLabel,
+						data: barData
+					}	
+				];
+				chart.update();
+			};
+			
+		}
+		const updateChartIMPL = _updateChartIMPL;
+		_updateChartIMPL = undefined;
 		
 		const reloadChartsFromServer = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_chart", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(data){
 				chartLabel = [selected_pri, selected_pri].join("/");
 				barData = data;
+				updateChartIMPL();
 			});
 		};
 		reloadChartsFromServer();
@@ -286,54 +328,7 @@ let _main = async function(){
 				toast("Order placed successfully!");
 			});
 		};
-		{
-			//Setup trading chart
-			const barCount = 60;
-			const initialDateStr = '01 Apr 2017 00:00 Z';
-
-			const ctx = document.getElementById('tradingchart').getContext('2d');
-			ctx.canvas.width = 1000;
-			ctx.canvas.height = 250;
-
-			let close = Math.random() * 100;
-			const randomNumber = function(low, high){
-				return low + (Math.random() * (high - low));
-			};
-			Chart.defaults.color = "#FFFFFF";
-			const chart = new Chart(ctx, {
-				type: 'candlestick',
-				data: {
-					datasets: [{
-						label: chartLabel,
-						data: barData,
-						type: 'candlestick',
-						color: {
-							up: '#00FF00',
-							down: '#FF0000',
-							unchanged: '#FFFFFF',
-						},
-						borderColor: {
-							up: '#FFFFFF',
-							down: '#FFFFFF',
-							unchanged: '#FFFFFF',
-						}
-						
-					}]
-				}
-			});
-			chart.config.options.scales.y.type = 'linear';
-
-			const update = function() {
-				chart.config.data.datasets = [
-					{
-						label: chartLabel,
-						data: barData
-					}	
-				];
-				chart.update();
-			};
-			
-		}
+		
 	});
 	callIfExists("balances_manager", async function(){
 		//Unload unused Web3 modules
