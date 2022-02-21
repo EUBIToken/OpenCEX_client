@@ -301,7 +301,7 @@ let _main = async function(){
 		const reloadChartsFromServer = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_chart", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(data){
 				chartLabel = [selected_pri, selected_pri].join("/");
-				barData = data;
+				barData = data[0];
 				updateChartIMPL();
 			});
 		};
