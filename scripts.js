@@ -373,7 +373,7 @@ let _main = async function(){
 						
 						smartGetElementById("FinalizeTokenDeposit").onclick = async function(){
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '"}}]'].join("")), async function(){
-								toast("Thank you for your deposit! It will be credited to your account after 2 confirmations.");
+								toast("Thank you for your deposit! It will be credited to your account after 10 confirmations.");
 							});
 						};
 					};
