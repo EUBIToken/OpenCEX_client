@@ -249,6 +249,7 @@ let _main = async function(){
 	callIfExists("trading_room", async function(){
 		//Unload unused Web3 modules
 		const copied_web3_conv2wei = Web3.utils.toWei;
+		const copied_web3_conv2dec = Web3.utils.fromWei;
 		Web3 = undefined;
 		
 		let selected_pri = "shitcoin";
@@ -302,6 +303,13 @@ let _main = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_chart", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(data){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				barData = data[0];
+				for(i = 0; i < barData.length; i++){
+					barData[i].o = parseFloat(copied_web3_conv2dec(barData[i].o));
+					barData[i].h = parseFloat(copied_web3_conv2dec(barData[i].h));
+					barData[i].l = parseFloat(copied_web3_conv2dec(barData[i].l));
+					barData[i].c = parseFloat(copied_web3_conv2dec(barData[i].c));
+					barData[i].x = i;
+				}
 				updateChartIMPL();
 			});
 		};
