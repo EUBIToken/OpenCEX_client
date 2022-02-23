@@ -252,9 +252,9 @@ let _main = async function(){
 		const copied_web3_conv2dec = Web3.utils.fromWei;
 		Web3 = undefined;
 		
-		let selected_pri = "shitcoin";
-		let selected_sec = "scamcoin";
-		let chartLabel = "shitcoin/scamcoin";
+		let selected_pri = "MintME";
+		let selected_sec = "PolyEUBI";
+		let chartLabel = "MintME/PolyEUBI";
 		let barData = [];
 		let _updateChartIMPL;
 		{
@@ -326,6 +326,8 @@ let _main = async function(){
 		
 		bindPair("shitcoin", "scamcoin");
 		bindPair("MATIC", "MintME");
+		bindPair("MATIC", "PolyEUBI");
+		bindPair("MintME", "PolyEUBI");
 		
 		//END trading pair registrations
 		
