@@ -352,12 +352,12 @@ let _main = async function(){
 			} else{
 				const temp = [];
 				const depositableTokens = ["MATIC", "MintME"];
+				const withdrawableTokens = ["MATIC", "MintME", "PolyEUBI"];
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
 					let token4 = e[i][0];
-					const canuse = depositableTokens.lastIndexOf(token4) > -1;
-					const depositModeSelector = canuse ? 'modal-trigger" href="#depositModal' : 'disabled';
-					const withdrawModeSelector = canuse ? 'modal-trigger" href="#withdrawModal' : 'disabled';
+					const depositModeSelector = (depositableTokens.lastIndexOf(token4) > -1) ? 'modal-trigger" href="#depositModal' : 'disabled';
+					const withdrawModeSelector = (withdrawableTokens.lastIndexOf(token4) > -1) ? 'modal-trigger" href="#withdrawModal' : 'disabled';
 					const token3 = escapeHTML(token4);
 					temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1])), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
 				}
