@@ -308,7 +308,7 @@ let _main = async function(){
 					barData[i].h = parseFloat(copied_web3_conv2dec(barData[i].h));
 					barData[i].l = parseFloat(copied_web3_conv2dec(barData[i].l));
 					barData[i].c = parseFloat(copied_web3_conv2dec(barData[i].c));
-					barData[i].x = parseFloat(copied_web3_conv2dec(barData[i].x));
+					barData[i].x = parseFloat(barData[i].x);
 				}
 				updateChartIMPL();
 			});
