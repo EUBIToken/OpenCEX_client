@@ -142,7 +142,7 @@ let _main = async function(){
 			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
 				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
 				data: data
-			}, "latest", async function(value){
+			}, "latest", async function(error, value){
 				if(value){
 					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
 				} else{
@@ -153,7 +153,7 @@ let _main = async function(){
 			(new Web3.modules.Eth("https://node.mintme.com:443")).call({
 				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
 				data: data
-			}, "latest", async function(value){
+			}, "latest", async function(error, value){
 				if(value){
 					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
 				} else{
