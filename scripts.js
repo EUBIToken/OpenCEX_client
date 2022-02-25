@@ -129,9 +129,6 @@ let _main = async function(){
 		preloadIfExists("client_name", function(e){
 			return ["Hi, ", escapeHTML(e), "!"].join("");
 		});
-		preloadIfExists("eth_deposit_address", function(e){
-			return ["Please send funds to this deposit address: ", escapeHTML(e), "!"].join("");
-		});
 		
 		if(registeredPreloads.length != 0){
 			//preload everything
@@ -344,7 +341,34 @@ let _main = async function(){
 		//Unload unused Web3 modules
 		const copied_web3_conv2wei = Web3.utils.toWei;
 		const copied_web3_conv2dec = Web3.utils.fromWei;
-		Web3 = undefined;
+		const data = ["0xe8aaeb54", exchange_wallet, "000000000000000000000000", e.substring(2)].join("");
+		preloadIfExists("eth_deposit_address", function(e){
+			const exchange_wallet = useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641";
+			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
+				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
+				data: data
+			}, "latest", async function(value){
+				if(value){
+					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+				} else{
+					toast("unable to fetch Polygon ERC20 deposit address!");
+				}
+				
+			});
+			(new Web3.modules.Eth("https://node.mintme.com:443")).call({
+				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
+				data: data
+			}, "latest", async function(value){
+				if(value){
+					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+				} else{
+					toast("unable to fetch MintME ERC20 deposit address!");
+				}
+			});
+			Web3 = undefined;
+			
+			return ["Please send funds to this deposit address: ", escapeHTML(e), "!"].join("");
+		});
 		
 		//Load user balances
 		bindResponseValidatorAndCall("OpenCEX_request_body=%5B%7B%22method%22%3A%20%22balances%22%7D%5D", async function(e){
@@ -353,15 +377,22 @@ let _main = async function(){
 				return "";
 			} else{
 				const temp = [];
-				const depositableTokens = ["MATIC", "MintME"];
-				const withdrawableTokens = ["MATIC", "MintME", "PolyEUBI"];
+				const tokenInfos = [
+					MATIC: {depositable: true, withdrawable: true, type: "eth"},
+					MintME: {depositable: true, withdrawable: true, type: "eth"},
+					PolyEUBI: {depositable: false, withdrawable: true, type: "polygon_erc20"}
+				];;
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
 					let token4 = e[i][0];
-					const depositModeSelector = (depositableTokens.lastIndexOf(token4) > -1) ? 'modal-trigger" href="#depositModal' : 'disabled';
-					const withdrawModeSelector = (withdrawableTokens.lastIndexOf(token4) > -1) ? 'modal-trigger" href="#withdrawModal' : 'disabled';
-					const token3 = escapeHTML(token4);
-					temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1])), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+					const tokenDescriptor = tokenInfos[token4];
+					if(tokenDescriptor){
+						const depositModeSelector = tokenDescriptor.depositable ? 'modal-trigger" href="#depositModal' : 'disabled';
+						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'modal-trigger" href="#withdrawModal' : 'disabled';
+						const token3 = escapeHTML(token4);
+						temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1])), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+					}
+					
 				}
 				
 				smartGetElementById("preloaded_balances").innerHTML = temp.join("");
@@ -371,8 +402,33 @@ let _main = async function(){
 					const stri = i.toString();
 					smartGetElementById("deposit_button_" + stri).onclick = async function(){
 						const token = this.dataset.depositToken;
+						const tokenDescriptor = tokenInfos[token];
 						const token2 = escapeJSON(token);
-						
+						if(!tokenDescriptor.depositable){
+							toast("Deposits are not supported for this token!");
+							return;
+						}
+						switch(tokenDescriptor.type){
+							case "eth":
+								smartGetElementById("preloaded_eth_deposit_address").style.display = "block";
+								smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
+								smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
+								break;
+							case "polygon_erc20":
+								smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
+								smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
+								smartGetElementById("polygon_erc20_deposit_address").style.display = "block";
+								break;
+							case "mintme_erc20":
+								smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
+								smartGetElementById("mintme_erc20_deposit_address").style.display = "block";
+								smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
+								break;
+							
+							default:
+								toast("Invalid token type!");
+								return;
+						}
 						smartGetElementById("FinalizeTokenDeposit").onclick = async function(){
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '"}}]'].join("")), async function(){
 								toast("Thank you for your deposit! It will be credited to your account after 10 confirmations.");
