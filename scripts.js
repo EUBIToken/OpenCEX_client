@@ -144,7 +144,7 @@ let _main = async function(){
 				data: data
 			}, "latest", async function(error, value){
 				if(value){
-					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: 0x", escapeHTML(value.substring(26)), "!"].join("");
 				} else{
 					toast("unable to fetch Polygon ERC20 deposit address!");
 				}
@@ -155,7 +155,7 @@ let _main = async function(){
 				data: data
 			}, "latest", async function(error, value){
 				if(value){
-					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: 0x", escapeHTML(value.substring(26)), "!"].join("");
 				} else{
 					toast("unable to fetch MintME ERC20 deposit address!");
 				}
