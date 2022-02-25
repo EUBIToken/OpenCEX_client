@@ -150,7 +150,7 @@ let _main = async function(){
 				}
 				
 			});
-			(new Web3.modules.Eth("https://node.mintme.com:443")).call({
+			(new Web3.modules.Eth("https://node1.mintme.com:443")).call({
 				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
 				data: data
 			}, "latest", async function(error, value){
@@ -408,7 +408,11 @@ let _main = async function(){
 				const amt = smartGetElementById("withdraw_amount");
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
-					smartGetElementById("deposit_button_" + stri).onclick = async function(){
+					const whatever = smartGetElementById("deposit_button_" + stri);
+					if(!whatever){
+						continue;
+					}
+					whatever.onclick = async function(){
 						const token = this.dataset.depositToken;
 						const tokenDescriptor = tokenInfos[token];
 						const token2 = escapeJSON(token);
