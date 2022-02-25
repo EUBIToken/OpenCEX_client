@@ -116,6 +116,13 @@ let _main = async function(){
 		});		
 	});
 	
+	let freeWeb3Counter = 0;
+	const tryFreeWeb3 = async function(){
+		if(++freeWeb3Counter == 2){
+			Web3 = undefined;
+		}
+	};
+	
 	callIfExists("has_preloads", async function(){
 		const registeredPreloads = [];
 		const registeredPreloadFormatters = [];
@@ -128,6 +135,34 @@ let _main = async function(){
 		
 		preloadIfExists("client_name", function(e){
 			return ["Hi, ", escapeHTML(e), "!"].join("");
+		});
+		
+		preloadIfExists("eth_deposit_address", function(e){
+			const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
+			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
+				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
+				data: data
+			}, "latest", async function(value){
+				if(value){
+					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+				} else{
+					toast("unable to fetch Polygon ERC20 deposit address!");
+				}
+				
+			});
+			(new Web3.modules.Eth("https://node.mintme.com:443")).call({
+				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
+				data: data
+			}, "latest", async function(value){
+				if(value){
+					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
+				} else{
+					toast("unable to fetch MintME ERC20 deposit address!");
+				}
+			});
+			tryFreeWeb3();
+			
+			return ["Please send funds to this deposit address: ", escapeHTML(e), "!"].join("");
 		});
 		
 		if(registeredPreloads.length != 0){
@@ -341,33 +376,7 @@ let _main = async function(){
 		//Unload unused Web3 modules
 		const copied_web3_conv2wei = Web3.utils.toWei;
 		const copied_web3_conv2dec = Web3.utils.fromWei;
-		preloadIfExists("eth_deposit_address", function(e){
-			const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
-			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
-				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
-				data: data
-			}, "latest", async function(value){
-				if(value){
-					smartGetElementById("polygon_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
-				} else{
-					toast("unable to fetch Polygon ERC20 deposit address!");
-				}
-				
-			});
-			(new Web3.modules.Eth("https://node.mintme.com:443")).call({
-				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
-				data: data
-			}, "latest", async function(value){
-				if(value){
-					smartGetElementById("mintme_erc20_deposit_address").innerHTML = ["Please send funds to this deposit address: ", escapeHTML(value), "!"].join("");
-				} else{
-					toast("unable to fetch MintME ERC20 deposit address!");
-				}
-			});
-			Web3 = undefined;
-			
-			return ["Please send funds to this deposit address: ", escapeHTML(e), "!"].join("");
-		});
+		tryFreeWeb3();
 		
 		//Load user balances
 		bindResponseValidatorAndCall("OpenCEX_request_body=%5B%7B%22method%22%3A%20%22balances%22%7D%5D", async function(e){
