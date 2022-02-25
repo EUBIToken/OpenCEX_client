@@ -341,8 +341,8 @@ let _main = async function(){
 		//Unload unused Web3 modules
 		const copied_web3_conv2wei = Web3.utils.toWei;
 		const copied_web3_conv2dec = Web3.utils.fromWei;
-		const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
 		preloadIfExists("eth_deposit_address", function(e){
+			const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
 			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
 				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
 				data: data
