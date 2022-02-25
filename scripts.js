@@ -377,11 +377,11 @@ let _main = async function(){
 				return "";
 			} else{
 				const temp = [];
-				const tokenInfos = [
+				const tokenInfos = {
 					MATIC: {depositable: true, withdrawable: true, type: "eth"},
 					MintME: {depositable: true, withdrawable: true, type: "eth"},
 					PolyEUBI: {depositable: false, withdrawable: true, type: "polygon_erc20"}
-				];;
+				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
 					let token4 = e[i][0];
