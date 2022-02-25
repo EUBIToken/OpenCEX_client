@@ -140,6 +140,7 @@ let _main = async function(){
 		preloadIfExists("eth_deposit_address", function(e){
 			const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
 			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
+				from: "0x0000000000000000000000000000000000000000",
 				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
 				data: data
 			}, "latest", async function(error, value){
@@ -151,6 +152,7 @@ let _main = async function(){
 				
 			});
 			(new Web3.modules.Eth("https://node1.mintme.com:443")).call({
+				from: "0x0000000000000000000000000000000000000000",
 				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
 				data: data
 			}, "latest", async function(error, value){
