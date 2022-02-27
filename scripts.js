@@ -390,7 +390,8 @@ let _main = async function(){
 				const tokenInfos = {
 					MATIC: {depositable: true, withdrawable: true, type: "eth"},
 					MintME: {depositable: true, withdrawable: true, type: "eth"},
-					PolyEUBI: {depositable: true, withdrawable: true, type: "polygon_erc20"}
+					PolyEUBI: {depositable: true, withdrawable: true, type: "polygon_erc20"},
+					BNB:  {depositable: true, withdrawable: true, type: "eth"}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
