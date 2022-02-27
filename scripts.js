@@ -359,8 +359,6 @@ let _main = async function(){
 		//BEGIN trading pair registrations
 		
 		//MATIC base
-		bindPair("MATIC", "MintME");
-		bindPair("MATIC", "BNB");
 		bindPair("MATIC", "PolyEUBI");
 		
 		//MintME base
@@ -369,8 +367,6 @@ let _main = async function(){
 		bindPair("MintME", "PolyEUBI");
 		
 		//BNB base
-		bindPair("BNB", "MATIC");
-		bindPair("BNB", "MintME");
 		bindPair("BNB", "PolyEUBI");
 		
 		//testcoins
