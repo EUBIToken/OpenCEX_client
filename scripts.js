@@ -358,10 +358,23 @@ let _main = async function(){
 		
 		//BEGIN trading pair registrations
 		
-		bindPair("shitcoin", "scamcoin");
+		//MATIC base
 		bindPair("MATIC", "MintME");
+		bindPair("MATIC", "BNB");
 		bindPair("MATIC", "PolyEUBI");
+		
+		//MintME base
+		bindPair("MintME", "MATIC");
+		bindPair("MintME", "BNB");
 		bindPair("MintME", "PolyEUBI");
+		
+		//BNB base
+		bindPair("BNB", "MATIC");
+		bindPair("BNB", "MintME");
+		bindPair("BNB", "PolyEUBI");
+		
+		//testcoins
+		bindPair("shitcoin", "scamcoin");
 		
 		//END trading pair registrations
 		
