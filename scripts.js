@@ -141,7 +141,7 @@ let _main = async function(){
 			const data = ["0xe8aaeb54", (useDevServer ? "000000000000000000000000a2d1d9e473f010bb62591ff38ca45dd16b279195" : "0000000000000000000000008bca715a0744801bcc5c0ce203b9d1fad84b4641"), "000000000000000000000000", e.substring(2)].join("");
 			(new Web3.modules.Eth("https://polygon-rpc.com")).call({
 				from: "0x0000000000000000000000000000000000000000",
-				to: "0x18a2db82061979e6e7d963cc3a21bcf6b6adef9b",
+				to: "0xed91faa6EFa532B40F6A1BFF3caB29260ebabd21",
 				data: data
 			}, "latest", async function(error, value){
 				if(value){
