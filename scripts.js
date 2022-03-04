@@ -334,7 +334,12 @@ let _main = async function(){
 		_updateChartIMPL = undefined;
 		
 		const reloadChartsFromServer = async function(){
-			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_chart", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(data){
+			const template = ['{"method": "', "get_chart", '", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '"}}'];
+			const builder = ['[', ...template, ", "];
+			template[1] = "bid_ask";
+			builder.push(...template, "]");
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(builder.join("")), async function(data){
+				//Update chart
 				chartLabel = [selected_pri, selected_sec].join("/");
 				barData = data[0];
 				for(let i = 0; i < barData.length; i++){
@@ -345,6 +350,25 @@ let _main = async function(){
 					barData[i].x = parseFloat(barData[i].x * 1000);
 				}
 				updateChartIMPL();
+				
+				//Update bid-ask
+				const bid = data[1][0];
+				const ask = data[1][1];
+				const bid_ask = smartGetElementById("bid_ask");
+				if(!bid){
+					if(ask){
+						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString()))].join("");
+						return;
+					} else{
+						bid_ask.innerHTML = "No liquidity for instant trades, limit orders only!";
+						return;
+					}
+				}
+				if(ask){
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString())), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString()))].join("");
+				} else{
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString())), ", no sell orders"].join("");
+				}
 			});
 		};
 		reloadChartsFromServer();
