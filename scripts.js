@@ -440,7 +440,7 @@ let _main = async function(){
 					EUBI:  {depositable: true, withdrawable: true, type: "mintme_erc20"},
 					"1000x":  {depositable: true, withdrawable: true, type: "mintme_erc20"},
 					BNB:  {depositable: true, withdrawable: true, type: "eth"},
-					shitcoin:  {depositable: true, withdrawable: true, type: "eth"},
+					shitcoin:  {depositable: false, withdrawable: false, type: "eth"},
 					scamcoin:  {depositable: false, withdrawable: false, type: "eth"}
 				};
 				for(let i = 0; i < e.length; i++){
