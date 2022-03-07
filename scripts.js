@@ -153,7 +153,7 @@ let _main = async function(){
 			});
 			(new Web3.modules.Eth("https://node1.mintme.com:443")).call({
 				from: "0x0000000000000000000000000000000000000000",
-				to: "0x98ecc85b24e0041c208c21aafba907cd74f9ded6",
+				to: "0x9f46db28f5d7ef3c5b8f03f19eea5b7aa8621349",
 				data: data
 			}, "latest", async function(error, value){
 				if(value){
