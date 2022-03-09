@@ -524,7 +524,7 @@ let _main = async function(){
 			const temp = [];
 			e = e[0];
 			for(let i = 0; i < e.length; i++){
-				const converter = get_conv(e[i][0] : e[i][1]);
+				const converter = get_conv(e[i][6] ? e[i][0] : e[i][1]);
 				temp.push(['<tr class="row"><td class="col s2">', escapeHTML(e[i][0]), "/", escapeHTML(e[i][1]), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][2], get_conv(e[i][0]))), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][3], converter)), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][4], converter)), '</td><td class="col s2">', (e[i][6] ? "buy" : "sell"), '</td><td class="col s2 row"><button class="col s12 btn btn-small waves-effect" data-cancel-target="', escapeHTML(e[i][5]), '" id="cancel_button_', i.toString(), '">Cancel</button></td></tr>'].join(""));
 			}
 			preloaded_orders.innerHTML = temp.join("");
