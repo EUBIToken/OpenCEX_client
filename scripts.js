@@ -278,7 +278,15 @@ let _main = async function(){
 	}	
 	//END ACCOUNT MANAGEMENT FUNCTIONS
 	
-	const decimal_override = {EUBI: "szabo", "1000x": "szabo"};
+	const get_conv = function(temp){
+		switch(temp){
+			case "EUBI":
+			case "1000x":
+				return "szabo";
+			default:
+				return "ether";
+		}
+	};
 	
 	//BEGIN TRADING FUNCTIONS
 	
@@ -347,10 +355,10 @@ let _main = async function(){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				barData = data[0];
 				for(let i = 0; i < barData.length; i++){
-					barData[i].o = parseFloat(copied_web3_conv2dec(barData[i].o, converter));
-					barData[i].h = parseFloat(copied_web3_conv2dec(barData[i].h, converter));
-					barData[i].l = parseFloat(copied_web3_conv2dec(barData[i].l, converter));
-					barData[i].c = parseFloat(copied_web3_conv2dec(barData[i].c, converter));
+					barData[i].o = parseFloat(copied_web3_conv2dec(barData[i].o, primary_converter));
+					barData[i].h = parseFloat(copied_web3_conv2dec(barData[i].h, primary_converter));
+					barData[i].l = parseFloat(copied_web3_conv2dec(barData[i].l, primary_converter));
+					barData[i].c = parseFloat(copied_web3_conv2dec(barData[i].c, primary_converter));
 					barData[i].x = parseFloat(barData[i].x * 1000);
 				}
 				updateChartIMPL();
@@ -361,7 +369,7 @@ let _main = async function(){
 				const bid_ask = smartGetElementById("bid_ask");
 				if(!bid){
 					if(ask){
-						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), converter))].join("");
+						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), primary_converter))].join("");
 						return;
 					} else{
 						bid_ask.innerHTML = "No liquidity for instant trades, limit orders only!";
@@ -369,9 +377,9 @@ let _main = async function(){
 					}
 				}
 				if(ask){
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), converter)), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), converter))].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), primary_converter)), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), primary_converter))].join("");
 				} else{
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), converter)), ", no sell orders"].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), primary_converter)), ", no sell orders"].join("");
 				}
 			});
 		};
@@ -379,10 +387,7 @@ let _main = async function(){
 		let bindPair = async function(primary, secondary){
 			smartGetElementById(["pair_selector", primary, secondary].join("_")).onclick = async function(){
 				selected_pri = primary;
-				primary_converter = decimal_override[primary];
-				if(!primary_converter){
-					primary_converter = "ether";
-				}
+				primary_converter = get_conv(primary);
 				selected_sec = secondary;
 				reloadChartsFromServer();
 			};
@@ -410,11 +415,7 @@ let _main = async function(){
 		
 		smartGetElementById("placeOrderButton").onclick = async function(){
 			const buySelector = smartGetElementById("buy_order_selector").checked;
-			let amount_converter = buySelector ? primary_converter : decimal_override[selected_sec];
-			if(!amount_converter){
-				amount_converter = "ether";
-			}
-			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, primary_converter)), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, amount_converter)), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, primary_converter)), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
 				toast("Order placed successfully!");
 			});
 		};
@@ -451,11 +452,7 @@ let _main = async function(){
 						const depositModeSelector = tokenDescriptor.depositable ? 'modal-trigger" href="#depositModal' : 'disabled';
 						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'modal-trigger" href="#withdrawModal' : 'disabled';
 						const token3 = escapeHTML(token4);
-						let converter = decimal_override[token4];
-						if(!converter){
-							converter = "ether";
-						}
-						temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1], converter)), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+						temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
 					}
 					
 				}
@@ -509,11 +506,7 @@ let _main = async function(){
 						const token2 = escapeJSON(token);
 						
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
-							let converter = decimal_override[token];
-							if(!converter){
-								converter = "ether";
-							}
-							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, converter)), '"}}]'].join("")), async function(){
+							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '"}}]'].join("")), async function(){
 								toast("withdrawal completed!");
 							});
 						};
@@ -531,15 +524,8 @@ let _main = async function(){
 			const temp = [];
 			e = e[0];
 			for(let i = 0; i < e.length; i++){
-				let price_converter = decimal_override[e[i][0]];
-				if(!price_converter){
-					price_converter = "ether";
-				}
-				let converter = e[i][6] ? price_converter : decimal_override[e[i][1]];
-				if(!converter){
-					converter = "ether";
-				}
-				temp.push(['<tr class="row"><td class="col s2">', escapeHTML(e[i][0]), "/", escapeHTML(e[i][1]), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][2], price_converter)), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][3], converter)), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][4], converter)), '</td><td class="col s2">', (e[i][6] ? "buy" : "sell"), '</td><td class="col s2 row"><button class="col s12 btn btn-small waves-effect" data-cancel-target="', escapeHTML(e[i][5]), '" id="cancel_button_', i.toString(), '">Cancel</button></td></tr>'].join(""));
+				const converter = get_conv(e[i][0] : e[i][1]);
+				temp.push(['<tr class="row"><td class="col s2">', escapeHTML(e[i][0]), "/", escapeHTML(e[i][1]), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][2], get_conv(e[i][0]))), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][3], converter)), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][4], converter)), '</td><td class="col s2">', (e[i][6] ? "buy" : "sell"), '</td><td class="col s2 row"><button class="col s12 btn btn-small waves-effect" data-cancel-target="', escapeHTML(e[i][5]), '" id="cancel_button_', i.toString(), '">Cancel</button></td></tr>'].join(""));
 			}
 			preloaded_orders.innerHTML = temp.join("");
 			for(let i = 0; i < e.length; i++){
