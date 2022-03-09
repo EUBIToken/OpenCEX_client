@@ -402,6 +402,8 @@ let _main = async function(){
 		bindPair("MintME", "MATIC");
 		bindPair("MintME", "BNB");
 		bindPair("MintME", "PolyEUBI");
+		bindPair("MintME", "1000x");
+		bindPair("MintME", "EUBI");
 		
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
