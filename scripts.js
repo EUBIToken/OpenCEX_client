@@ -360,12 +360,13 @@ let _main = async function(){
 					if(data.length > 1){
 						const data2 = [data[0]];
 						let prev = data[0];
+						const span = new BigInt(86400);
 						for(let i = 1; i < data.length && data2.length < 60; i++){
 							const prevtime = prev.x;
-							const distance = Math.floor((prevtime - data[i].x) / 86400);
+							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(data[i].x)).div(span).toString());
 							prev = data[i];
 							for(let c = 0; c < distance; ){
-								data2.push({x: prevtime - (++c * 86400), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+								data2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
 							
 						}
