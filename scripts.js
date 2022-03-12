@@ -356,7 +356,7 @@ let _main = async function(){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				let cdata = data[0];
 				if(cdata.length != 0){
-					
+					try{
 					
 					//Fix missing trading sessions
 					if(cdata.length > 1){
@@ -388,6 +388,7 @@ let _main = async function(){
 					}
 					barData = cdata;
 					updateChartIMPL();
+}catch(e){toast(e);}
 				} else{
 					barData = [];
 					updateChartIMPL();
