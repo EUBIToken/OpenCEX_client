@@ -361,7 +361,7 @@ let _main = async function(){
 					if(data.length > 1){
 						const data2 = [data[0]];
 						let prev = data[0];
-						const span = new BigInt(86400);
+						const span = new BigInt('86400');
 						for(let i = 1; (i < data.length) && (data2.length < 60); i++){
 							const prevtime = prev.x;
 							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(data[i].x)).div(span).toString());
@@ -373,13 +373,12 @@ let _main = async function(){
 						}
 						data = data2;
 					}
-					
+					console.log(data.length);
 					for(let i = 0; i < data.length; i++){
-						console.log(data[i].o);
-						data[i].o = parseFloat(copied_web3_conv2dec(data[i].o, primary_converter));
-						data[i].h = parseFloat(copied_web3_conv2dec(data[i].h, primary_converter));
-						data[i].l = parseFloat(copied_web3_conv2dec(data[i].l, primary_converter));
-						data[i].c = parseFloat(copied_web3_conv2dec(data[i].c, primary_converter));
+						data[i].o = parseFloat(copied_web3_conv2dec(data[i].o.toString(), primary_converter));
+						data[i].h = parseFloat(copied_web3_conv2dec(data[i].h.toString(), primary_converter));
+						data[i].l = parseFloat(copied_web3_conv2dec(data[i].l.toString(), primary_converter));
+						data[i].c = parseFloat(copied_web3_conv2dec(data[i].c.toString(), primary_converter));
 						data[i].x = parseFloat(data[i].x * 1000);
 					}
 					barData = data;
