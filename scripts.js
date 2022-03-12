@@ -294,6 +294,7 @@ let _main = async function(){
 		//Unload unused Web3 modules
 		const copied_web3_conv2wei = Web3.utils.toWei;
 		const copied_web3_conv2dec = Web3.utils.fromWei;
+		const BigInt = Web3.utils.BN;
 		Web3 = undefined;
 		
 		let selected_pri = "MintME";
