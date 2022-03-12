@@ -360,13 +360,14 @@ let _main = async function(){
 					
 					//Fix missing trading sessions
 					if(cdata.length > 1){
-						const cdata2 = [cdata[0]];
+						const cdata2 = [];
 						let prev = cdata[0];
 						const span = new BigInt('86400');
 						for(let i = 1; (i < cdata.length) && (cdata2.length < 60); i++){
-							const prevtime = prev.x;
-							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(cdata[i].x)).div(span).toString());
+							const prevtime = new BigInt(prev.x);
+							const distance = parseInt(prevtime.sub(new BigInt(cdata[i].x)).div(span).toString());
 							prev = cdata[i];
+toast(distance.toString());
 							for(let c = 0; c < distance && cdata2.length < 60; ){
 								cdata2.push({x: prevtime.sub((new BigInt(++c)).mul(span)).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
