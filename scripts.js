@@ -378,7 +378,7 @@ let _main = async function(){
 						}
 						cdata = cdata2;
 					}
-					console.log(cdata.length);
+					toast('4');
 					for(let i = 0; i < cdata.length; i++){
 						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), primary_converter));
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
