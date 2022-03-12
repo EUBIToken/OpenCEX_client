@@ -367,10 +367,12 @@ let _main = async function(){
 							const prevtime = prev.x;
 							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(cdata[i].x)).div(span).toString());
 							prev = cdata[i];
-							for(let c = 0; c < distance; ){
+							for(let c = 0; c < distance && cdata2.length < 60; ){
 								cdata2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
-							cdata2.push(prev);
+							if(cdata2.length < 60){
+								cdata2.push(prev);
+							}
 							
 						}
 						cdata = cdata2;
