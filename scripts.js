@@ -358,7 +358,7 @@ let _main = async function(){
 					
 					
 					//Fix missing trading sessions
-					if(data.length > 1){
+					if(false){
 						const data2 = [data[0]];
 						let prev = data[0];
 						const span = new BigInt('86400');
