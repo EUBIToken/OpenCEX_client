@@ -369,6 +369,7 @@ let _main = async function(){
 							for(let c = 0; c < distance; ){
 								data2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
+							data2.push(prev);
 							
 						}
 						data = data2;
