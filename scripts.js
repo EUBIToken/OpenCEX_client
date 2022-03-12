@@ -383,10 +383,10 @@ let _main = async function(){
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
-					bardata = cdata;
+					barData = cdata;
 					updateChartIMPL();
 				} else{
-					bardata = [];
+					barData = [];
 					updateChartIMPL();
 				}
 				
