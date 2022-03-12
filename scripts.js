@@ -353,15 +353,38 @@ let _main = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(builder.join("")), async function(data){
 				//Update chart
 				chartLabel = [selected_pri, selected_sec].join("/");
-				barData = data[0];
-				for(let i = 0; i < barData.length; i++){
-					barData[i].o = parseFloat(copied_web3_conv2dec(barData[i].o, primary_converter));
-					barData[i].h = parseFloat(copied_web3_conv2dec(barData[i].h, primary_converter));
-					barData[i].l = parseFloat(copied_web3_conv2dec(barData[i].l, primary_converter));
-					barData[i].c = parseFloat(copied_web3_conv2dec(barData[i].c, primary_converter));
-					barData[i].x = parseFloat(barData[i].x * 1000);
+				if(data.length != 0){
+					
+					
+					//Fix missing trading sessions
+					if(data.length > 1){
+						const data2 = [data[0]];
+						let prev = data[0];
+						for(let i = 1; i < data.length && data2.length < 60; i++){
+							const prevtime = prev.x;
+							const distance = Math.floor((prevtime - data[i].x) / 86400);
+							prev = data[i];
+							for(let c = 0; c < distance; ){
+								data2.push({x: prevtime - (++c * 86400), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+							}
+							
+						}
+						data = data2;
+					}
+					
+					for(let i = 0; i < data.length; i++){
+						data[i].o = parseFloat(copied_web3_conv2dec(data[i].o, primary_converter));
+						data[i].h = parseFloat(copied_web3_conv2dec(data[i].h, primary_converter));
+						data[i].l = parseFloat(copied_web3_conv2dec(data[i].l, primary_converter));
+						data[i].c = parseFloat(copied_web3_conv2dec(data[i].c, primary_converter));
+						data[i].x = parseFloat(data[i].x * 1000);
+					}
+					barData = data;
+					updateChartIMPL();
+				} else{
+					barData = [];
+					updateChartIMPL();
 				}
-				updateChartIMPL();
 				
 				//Update bid-ask
 				const bid = data[1][0];
