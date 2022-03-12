@@ -359,7 +359,7 @@ let _main = async function(){
 					try{
 					
 					//Fix missing trading sessions
-					if(cdata.length > 1){
+					if(false){
 						const cdata2 = [cdata[0]];
 						let prev = cdata[0];
 						const span = new BigInt('86400');
@@ -378,7 +378,6 @@ let _main = async function(){
 						}
 						cdata = cdata2;
 					}
-					toast('4');
 					for(let i = 0; i < cdata.length; i++){
 						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), primary_converter));
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
