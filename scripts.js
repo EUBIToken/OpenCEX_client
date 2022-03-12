@@ -354,38 +354,39 @@ let _main = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(builder.join("")), async function(data){
 				//Update chart
 				chartLabel = [selected_pri, selected_sec].join("/");
-				if(data.length != 0){
+				let cdata = data[0];
+				if(cdata.length != 0){
 					
 					
 					//Fix missing trading sessions
-					if(false){
-						const data2 = [data[0]];
-						let prev = data[0];
+					if(cdata.length > 1){
+						const cdata2 = [cdata[0]];
+						let prev = cdata[0];
 						const span = new BigInt('86400');
-						for(let i = 1; (i < data.length) && (data2.length < 60); i++){
+						for(let i = 1; (i < cdata.length) && (cdata2.length < 60); i++){
 							const prevtime = prev.x;
-							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(data[i].x)).div(span).toString());
-							prev = data[i];
+							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(cdata[i].x)).div(span).toString());
+							prev = cdata[i];
 							for(let c = 0; c < distance; ){
-								data2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+								cdata2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
-							data2.push(prev);
+							cdata2.push(prev);
 							
 						}
-						data = data2;
+						cdata = cdata2;
 					}
-					console.log(data.length);
-					for(let i = 0; i < data.length; i++){
-						data[i].o = parseFloat(copied_web3_conv2dec(data[i].o.toString(), primary_converter));
-						data[i].h = parseFloat(copied_web3_conv2dec(data[i].h.toString(), primary_converter));
-						data[i].l = parseFloat(copied_web3_conv2dec(data[i].l.toString(), primary_converter));
-						data[i].c = parseFloat(copied_web3_conv2dec(data[i].c.toString(), primary_converter));
-						data[i].x = parseFloat(data[i].x * 1000);
+					console.log(cdata.length);
+					for(let i = 0; i < cdata.length; i++){
+						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), primary_converter));
+						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
+						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), primary_converter));
+						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
+						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
-					barData = data;
+					bardata = cdata;
 					updateChartIMPL();
 				} else{
-					barData = [];
+					bardata = [];
 					updateChartIMPL();
 				}
 				
