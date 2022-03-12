@@ -366,7 +366,6 @@ let _main = async function(){
 							const prevtime = prev.x;
 							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(data[i].x)).div(span).toString());
 							prev = data[i];
-							console.log(distance);
 							for(let c = 0; c < distance; ){
 								data2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
@@ -376,6 +375,7 @@ let _main = async function(){
 					}
 					
 					for(let i = 0; i < data.length; i++){
+						console.log(data[i].o);
 						data[i].o = parseFloat(copied_web3_conv2dec(data[i].o, primary_converter));
 						data[i].h = parseFloat(copied_web3_conv2dec(data[i].h, primary_converter));
 						data[i].l = parseFloat(copied_web3_conv2dec(data[i].l, primary_converter));
