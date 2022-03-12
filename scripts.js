@@ -383,7 +383,7 @@ prev = cdata[i];
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
 						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), primary_converter));
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
-						cdata[i].x = parseFloat(cdata[i].x * 1000);
+						cdata[i].x = parseFloat(cdata[i].x) * 1000.0;
 					}
 					barData = cdata;
 					updateChartIMPL();
