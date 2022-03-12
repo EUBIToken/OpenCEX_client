@@ -193,7 +193,7 @@ let _main = async function(){
 			} else{
 				renemberExtras = smartGetElementById("renemberme").value ? ', "renember": true' : ', "renember": false';
 			}
-			const captcha = smartGetElementById("OpenCEX-captcha-result").getElementsByName('rain-captcha-response')[0].value;
+			const captcha = getElementsByName('rain-captcha-response')[0].value;
 			if(captcha == ""){
 				toast("Please solve the captcha!");
 				return;
