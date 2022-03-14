@@ -356,10 +356,9 @@ let _main = async function(){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				let cdata = data[0];
 				if(cdata.length != 0){
-					try{
 					
 					//Fix missing trading sessions
-					if(false){
+					if(true){
 						const cdata2 = [cdata[0]];
 						let prev = cdata[0];
 						const span = new BigInt('86400');
@@ -387,7 +386,6 @@ let _main = async function(){
 					}
 					barData = cdata;
 					updateChartIMPL();
-}catch(e){toast(e);}
 				} else{
 					barData = [];
 					updateChartIMPL();
