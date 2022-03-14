@@ -603,6 +603,8 @@ let _main = async function(){
 	bindIfExists = undefined;
 	
 	M.AutoInit();
+	
+	console.log(grecaptcha);
 };
 
 if (/complete|interactive|loaded/.test(document.readyState)) {
