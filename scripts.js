@@ -374,6 +374,7 @@ let _main = async function(){
 							}
 							
 						}
+						console.log(JSON.stringify(cdata2));
 						cdata = cdata2;
 					}
 					for(let i = 0; i < cdata.length; i++){
