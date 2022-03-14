@@ -372,21 +372,18 @@ let _main = async function(){
 								cdata2.push(prev);
 							}
 						}
-						console.log(cdata2.length);
 						cdata = cdata2;
 					}
 					//Wind up chart
 					const last2 = cdata[cdata.length - 1];
 					let time2 = last2.x;
-					let dist2 = Date.now() - time2;
+					let dist2 = parseInt(Math.floor(Date.now() / 1000)) - time2;
 					while(dist2 > 86400){
 						time2 += 86400;
 						dist2 -= 86400;
 						cdata.push({o: last2.c, h: last2.c, l: last2.c, c: last2.c, x: time2});
 					}
-					
-					console.log(cdata.length);
-					
+										
 					if(cdata.length > 60){
 						cdata.reverse();
 						cdata.length = 60;
