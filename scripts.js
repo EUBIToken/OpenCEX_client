@@ -2,7 +2,7 @@
 let OpenCEX_recaptcha_callback = async function(){
 	
 };
-OpenCEX_expired_callback = async function(){
+let OpenCEX_expired_callback = async function(){
 	
 };
 let _main = async function(){
