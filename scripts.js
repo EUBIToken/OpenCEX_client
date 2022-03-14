@@ -381,7 +381,7 @@ let _main = async function(){
 					let dist2 = Date.now() - time2;
 					while(dist2 > 86400){
 						time2 += 86400;
-						time2 -= 86400;
+						dist2 -= 86400;
 						cdata.push({o: last2.c, h: last2.c, l: last2.c, c: last2.c, x: time2});
 					}
 					
