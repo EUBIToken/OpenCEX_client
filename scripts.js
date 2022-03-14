@@ -366,7 +366,7 @@ let _main = async function(){
 							const prevtime = new BigInt(prev.x.toString());
 							const distance = parseInt((new BigInt(cdata[i].x)).sub(prevtime).div(span).toString());
 							for(let c = 0; c < distance && cdata2.length < 60; ){
-								cdata2.push({x: prevtime.add((new BigInt((++c).toString())).mul(span)).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+								cdata2.push({x: parseInt(prevtime.add((new BigInt((++c).toString())).mul(span)).toString()), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
 							prev = cdata[i];
 							if(cdata2.length < 60){
@@ -382,7 +382,7 @@ let _main = async function(){
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
 						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), primary_converter));
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
-						cdata[i].x = parseFloat(cdata[i].x) * 1000.0;
+						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
 					barData = cdata;
 					updateChartIMPL();
