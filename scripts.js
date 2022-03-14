@@ -384,7 +384,13 @@ let _main = async function(){
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
-					barData = cdata;
+					
+					if(cdata.length > 10){
+						barData = cdata.slice(cdata.length - 10);
+					} else{
+						barData = cdata;
+					}
+					
 					updateChartIMPL();
 				} else{
 					barData = [];
