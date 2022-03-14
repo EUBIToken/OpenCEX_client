@@ -371,7 +371,7 @@ let _main = async function(){
 							prev = cdata[i];
 							console.log(distance);
 							for(let c = 0; c < distance; ){
-								cdata2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+								cdata2.push({x: prevtime.sub((new BigInt(++c)).mul(span)).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
 							
 						}
