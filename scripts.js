@@ -1,4 +1,10 @@
 "use strict";
+let OpenCEX_recaptcha_callback = async function(){
+	
+};
+OpenCEX_expired_callback = async function(){
+	
+};
 let _main = async function(){
 	const useDevServer = localStorage.getItem("OpenCEX_devserver") !== null;
 	
@@ -180,7 +186,18 @@ let _main = async function(){
 	
 	//BEGIN ACCOUNT MANAGEMENT FUNCTIONS
 	{
+		let captcha = undefined;
+		OpenCEX_recaptcha_callback = async function(res2){
+			captcha = res2;
+		};
+		OpenCEX_expired_callback = async function(){
+			captcha = undefined;
+		};
 		const registerOrLogin = async function(register){
+			if(!captcha){
+				toast("Please solve the captcha!");
+				return;
+			}
 			const password = smartGetElementById("password").value;
 			let method = "login";
 			let renemberExtras = "";
@@ -192,11 +209,6 @@ let _main = async function(){
 				}
 			} else{
 				renemberExtras = smartGetElementById("renemberme").value ? ', "renember": true' : ', "renember": false';
-			}
-			const captcha = document.getElementsByName('rain-captcha-response')[0].value;
-			if(captcha == ""){
-				toast("Please solve the captcha!");
-				return;
 			}
 			
 			const xhttp = prepxhtp();
