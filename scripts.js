@@ -335,7 +335,7 @@ let _main = async function(){
 				chart.config.data.datasets = [
 					{
 						label: chartLabel,
-						data: barData
+						data: barData.slice(45)
 					}	
 				];
 				chart.update();
