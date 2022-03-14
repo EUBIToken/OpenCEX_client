@@ -5,6 +5,12 @@
 		<!-- load materialize library -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<!-- load scripts -->
+		<script src="scripts.js"></script>
+		
+		<!-- EXTRA: ReCaptcha -->
+		<script async defer src="https://www.google.com/recaptcha/api.js" type="application/javascript"></script>
 	</head>
 	<body class="blue-grey darken-3" style="color: white;">
 		<nav class="blue accent-4">
@@ -27,7 +33,7 @@
 				<label for="password">password</label>
 			</div>
 			<form class="col s12" id="OpenCEX-captcha-result">
-				<div class="g-recaptcha" data-sitekey="6Lc4B9weAAAAAGsV7uPTu-n6VVJ3ts6nBA-1qQvq" data-callback="OpenCEX_recaptcha_callback" data-expired-callback="OpenCEX_expired_callback"></div>
+				<div class="g-recaptcha" data-sitekey="6Lc4B9weAAAAAGsV7uPTu-n6VVJ3ts6nBA-1qQvq"></div>
 			</form>
 			<p>
 				<label>
@@ -37,10 +43,5 @@
 			</p>
 			<button class="col s12 btn waves-effect waves-light" id="loginButton">log in</button>
 		</div>
-		<!-- load scripts -->
-		<script src="scripts.js"></script>
-		
-		<!-- EXTRA: ReCaptcha -->
-		<script defer src="https://recaptcha.com/recaptcha/api.js" type="application/javascript"></script>
 	</body>
 </html>
