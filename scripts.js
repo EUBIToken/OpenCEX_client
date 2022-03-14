@@ -385,8 +385,8 @@ let _main = async function(){
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
 					
-					if(cdata.length > 10){
-						barData = cdata.slice(cdata.length - 10);
+					if(cdata.length > 5){
+						barData = cdata.slice(cdata.length - 5);
 					} else{
 						barData = cdata;
 					}
