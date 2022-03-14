@@ -1,4 +1,10 @@
 "use strict";
+let OpenCEX_recaptcha_callback = async function(){
+	
+};
+let OpenCEX_expired_callback = async function(){
+	
+};
 let _main = async function(){
 	const useDevServer = localStorage.getItem("OpenCEX_devserver") !== null;
 	
@@ -181,16 +187,12 @@ let _main = async function(){
 	//BEGIN ACCOUNT MANAGEMENT FUNCTIONS
 	{
 		let captcha = undefined;
-		callIfExists("OpenCEX_recaptcha", async function(){
-			grecaptcha.render('OpenCEX_recaptcha', {
-				'sitekey': '6Lc4B9weAAAAAGsV7uPTu-n6VVJ3ts6nBA-1qQvq',
-				'expired-callback': async function(){
-					captcha = undefined;
-				}, 'callback': async function(res2){
-					captcha = res2;
-				}
-			});
-		});
+		OpenCEX_recaptcha_callback = async function(res2){
+			captcha = res2;
+		};
+		OpenCEX_expired_callback = async function(){
+			captcha = undefined;
+		};
 		const registerOrLogin = async function(register){
 			if(!captcha){
 				toast("Please solve the captcha!");
