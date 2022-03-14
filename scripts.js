@@ -374,7 +374,7 @@ let _main = async function(){
 							}
 							
 						}
-						console.log(cdata.length);
+						console.log(cdata2.length);
 						cdata = cdata2;
 					}
 					for(let i = 0; i < cdata.length; i++){
