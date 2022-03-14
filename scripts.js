@@ -358,7 +358,7 @@ let _main = async function(){
 				if(cdata.length != 0){
 					
 					//Fix missing trading sessions
-					if(true){
+					if(false){
 						const cdata2 = [cdata[0]];
 						let prev = cdata[0];
 						const span = new BigInt('86400');
@@ -384,13 +384,7 @@ let _main = async function(){
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
-					
-					if(cdata.length > 5){
-						barData = cdata.slice(cdata.length - 5);
-					} else{
-						barData = cdata;
-					}
-					
+					barData = cdata;
 					updateChartIMPL();
 				} else{
 					barData = [];
