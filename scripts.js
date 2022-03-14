@@ -356,7 +356,6 @@ let _main = async function(){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				let cdata = data[0];
 				if(cdata.length != 0){
-					
 					//Fix missing trading sessions
 					if(cdata.length > 1){
 						const cdata2 = [cdata[0]];
@@ -372,12 +371,27 @@ let _main = async function(){
 							if(cdata2.length < 60){
 								cdata2.push(prev);
 							}
-							
 						}
 						console.log(cdata2.length);
 						cdata = cdata2;
 					}
-					console.log(JSON.stringify(cdata));
+					//Wind up chart
+					const timenow = Date.now();
+					const last2 = cdata[cdata.length - 1];
+					let time2 = last2.x;
+					let dist2 = timenow - time2;
+					while(dist2 > 86400){
+						time2 += 86400;
+						time2 -= 86400;
+						cdata.push({o: last2.c, h: last2.c, l: last2.c, c: last2.c, x: time2});
+					}
+					
+					if(cdata.length > 60){
+						cdata.reverse();
+						cdata.length = 60;
+						cdata.reverse();
+					}
+					
 					for(let i = 0; i < cdata.length; i++){
 						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), primary_converter));
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
