@@ -376,10 +376,9 @@ let _main = async function(){
 						cdata = cdata2;
 					}
 					//Wind up chart
-					const timenow = Date.now();
 					const last2 = cdata[cdata.length - 1];
 					let time2 = last2.x;
-					let dist2 = timenow - time2;
+					let dist2 = Date.now() - time2;
 					while(dist2 > 86400){
 						time2 += 86400;
 						time2 -= 86400;
