@@ -385,6 +385,8 @@ let _main = async function(){
 						cdata.push({o: last2.c, h: last2.c, l: last2.c, c: last2.c, x: time2});
 					}
 					
+					console.log(cdata.length);
+					
 					if(cdata.length > 60){
 						cdata.reverse();
 						cdata.length = 60;
