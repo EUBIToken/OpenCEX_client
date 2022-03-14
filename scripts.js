@@ -365,8 +365,8 @@ let _main = async function(){
 						for(let i = 1; (i < cdata.length) && (cdata2.length < 60); i++){
 							const prevtime = new BigInt(prev.x.toString());
 							const distance = parseInt((new BigInt(cdata[i].x)).sub(prevtime).div(span).toString());
-							for(let c = 0; c < distance && cdata2.length < 60; ){
-								cdata2.push({o: prev.c, h: prev.c, l: prev.c, c: prev.c, x: parseInt(prevtime.add((new BigInt(((c++) + 1).toString())).mul(span)).toString())});
+							for(let c = 1; c < distance && cdata2.length < 60; ){
+								cdata2.push({o: prev.c, h: prev.c, l: prev.c, c: prev.c, x: parseInt(prevtime.add((new BigInt((c++).toString())).mul(span)).toString())});
 							}
 							prev = cdata[i];
 							if(cdata2.length < 60){
