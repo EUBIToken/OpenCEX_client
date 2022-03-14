@@ -356,22 +356,24 @@ let _main = async function(){
 				chartLabel = [selected_pri, selected_sec].join("/");
 				let cdata = data[0];
 				if(cdata.length != 0){
-					
+					try{
 					
 					//Fix missing trading sessions
-					if(cdata.length > 1){
+					if(false){
 						const cdata2 = [cdata[0]];
 						let prev = cdata[0];
 						const span = new BigInt('86400');
 						for(let i = 1; (i < cdata.length) && (cdata2.length < 60); i++){
-							const prevtime = prev.x;
-							const distance = parseInt((new BigInt(prevtime)).sub(new BigInt(cdata[i].x)).div(span).toString());
+							const prevtime = new BigInt(prev.x.toString());
+							const distance = parseInt((new BigInt(cdata[i])).sub(prevtime).div(span).toString());toast('3');
+							for(let c = 0; c < distance && cdata2.length < 60; ){
+								cdata2.push({x: prevtime.add((new BigInt((++c).toString()))).mul(span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
+							}
 							prev = cdata[i];
 							console.log(distance);
 							for(let c = 0; c < distance; ){
 								cdata2.push({x: prevtime.sub(new BigInt(++c) * span).toString(), o: prev.c, h: prev.c, l: prev.c, c: prev.c});
 							}
-							cdata2.push(prev);
 							
 						}
 						cdata = cdata2;
@@ -381,10 +383,11 @@ let _main = async function(){
 						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
 						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), primary_converter));
 						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
-						cdata[i].x = parseFloat(cdata[i].x * 1000);
+						cdata[i].x = parseFloat(cdata[i].x) * 1000.0;
 					}
 					barData = cdata;
 					updateChartIMPL();
+}catch(e){toast(e);}
 				} else{
 					barData = [];
 					updateChartIMPL();
