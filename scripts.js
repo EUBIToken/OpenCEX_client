@@ -59,7 +59,7 @@ let _main = async function(){
 	
 	const prepxhtp = function(){
 		const xhttp = new XMLHttpRequest();
-		xhttp.open("POST", useDevServer ? "https://opencex-net-dev.herokuapp.com" : "https://opencex-prod.polyeubitoken.com", true);
+		xhttp.open("POST", useDevServer ? "https://opencex-net-dev.herokuapp.com" : "https://opencex-net-prod.herokuapp.com", true);
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		xhttp.addEventListener('error', async function(){
 			toast("Server connection failed!");
