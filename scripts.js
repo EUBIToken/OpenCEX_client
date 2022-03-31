@@ -391,10 +391,10 @@ let _main = async function(){
 					}
 					
 					for(let i = 0; i < cdata.length; i++){
-						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), primary_converter));
-						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), primary_converter));
-						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), primary_converter));
-						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), primary_converter));
+						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), "ether"));
+						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), "ether"));
+						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), "ether"));
+						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), "ether"));
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
 					barData = cdata;
@@ -410,7 +410,7 @@ let _main = async function(){
 				const bid_ask = smartGetElementById("bid_ask");
 				if(!bid){
 					if(ask){
-						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), primary_converter))].join("");
+						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), "ether"))].join("");
 						return;
 					} else{
 						bid_ask.innerHTML = "No liquidity for instant trades, limit orders only!";
@@ -418,9 +418,9 @@ let _main = async function(){
 					}
 				}
 				if(ask){
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), primary_converter)), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), primary_converter))].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), "ether")), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), "ether"))].join("");
 				} else{
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), primary_converter)), ", no sell orders"].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), "ether")), ", no sell orders"].join("");
 				}
 			});
 		};
@@ -458,7 +458,7 @@ let _main = async function(){
 		
 		smartGetElementById("placeOrderButton").onclick = async function(){
 			const buySelector = smartGetElementById("buy_order_selector").checked;
-			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, primary_converter)), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, "ether")), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
 				toast("Order placed successfully!");
 			});
 		};
