@@ -288,6 +288,16 @@ let _main = async function(){
 		}
 	};
 	
+	const get_price_conv = function(temp){
+		switch(temp){
+			case "EUBI":
+			case "1000x":
+				return "mether";
+			default:
+				return "ether";
+		}
+	};
+	
 	//BEGIN TRADING FUNCTIONS
 	
 	callIfExists("trading_room", async function(){
@@ -300,6 +310,7 @@ let _main = async function(){
 		let selected_pri = "MintME";
 		let selected_sec = "PolyEUBI";
 		let chartLabel = "MintME/PolyEUBI";
+		let price_conv = "ether";
 		let barData = [];
 		let primary_converter = "ether";
 		let _updateChartIMPL;
@@ -391,10 +402,10 @@ let _main = async function(){
 					}
 					
 					for(let i = 0; i < cdata.length; i++){
-						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), "ether"));
-						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), "ether"));
-						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), "ether"));
-						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), "ether"));
+						cdata[i].o = parseFloat(copied_web3_conv2dec(cdata[i].o.toString(), price_conv));
+						cdata[i].h = parseFloat(copied_web3_conv2dec(cdata[i].h.toString(), price_conv));
+						cdata[i].l = parseFloat(copied_web3_conv2dec(cdata[i].l.toString(), price_conv));
+						cdata[i].c = parseFloat(copied_web3_conv2dec(cdata[i].c.toString(), price_conv));
 						cdata[i].x = parseFloat(cdata[i].x * 1000);
 					}
 					barData = cdata;
@@ -410,7 +421,7 @@ let _main = async function(){
 				const bid_ask = smartGetElementById("bid_ask");
 				if(!bid){
 					if(ask){
-						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), "ether"))].join("");
+						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), price_conv))].join("");
 						return;
 					} else{
 						bid_ask.innerHTML = "No liquidity for instant trades, limit orders only!";
@@ -418,9 +429,9 @@ let _main = async function(){
 					}
 				}
 				if(ask){
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), "ether")), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), "ether"))].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), price_conv)), ", ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), price_conv))].join("");
 				} else{
-					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), "ether")), ", no sell orders"].join("");
+					bid_ask.innerHTML = ["bid: ", escapeHTML(copied_web3_conv2dec(bid.toString(), price_conv)), ", no sell orders"].join("");
 				}
 			});
 		};
@@ -429,6 +440,7 @@ let _main = async function(){
 			smartGetElementById(["pair_selector", primary, secondary].join("_")).onclick = async function(){
 				selected_pri = primary;
 				primary_converter = get_conv(primary);
+				price_conv = get_price_conv(secondary);
 				selected_sec = secondary;
 				reloadChartsFromServer();
 			};
@@ -458,7 +470,7 @@ let _main = async function(){
 		
 		smartGetElementById("placeOrderButton").onclick = async function(){
 			const buySelector = smartGetElementById("buy_order_selector").checked;
-			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, "ether")), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "place_order", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "price": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_price").value, price_conv)), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("order_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '", "buy": ', buySelector.toString(), ', "fill_mode": ', escapeJSON(smartGetElementById("fill_mode_selector").value), '}}]'].join("")), async function(){
 				toast("Order placed successfully!");
 			});
 		};
