@@ -253,19 +253,7 @@ let _main = async function(){
 						toast("Operation completed successfully! redirecting to home page...");
 						document.location.href = "index.html";
 					} else{
-						//Alternate logout only destroys the session cookie on the client side, if the server
-						//is malfunctioning. It is used if the server is not working properly.
-						toast("Server returned error, attempting alternate logout...");
-						const logout = new XMLHttpRequest();
-						logout.open("POST", "quick_destroy_session.php", true);
-						logout.addEventListener('load', async function(){
-							toast("Operation completed successfully! redirecting to home page...");
-							document.location.href = "index.html";
-						});
-						logout.addEventListener('error', async function(){
-							toast("Alternate logout failed, please clear your cookies!");
-						});
-						logout.send();
+						toast("Server returned error, please clear your cookies!");
 					}
 				} else{
 					toast("Server returned invalid data!");
