@@ -1,61 +1,363 @@
-<html>
-	<head>
-		<title>Jessie Lesbian cryptocurrency exchange</title>
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>JLEX App</title>
+   <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Jessie Lesbian - Polyeubi token cryptocurrency exchange">
+    <meta name="description" content="free open source 0% fee transparent exchange">
+    <meta name="keywords" content="new crypto, eubi, polygon, matic, polyeubi, open source, dex"> 
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- JS-->
+    <script async src="scripts.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js" integrity="sha512-mULnawDVcCnsk9a4aG1QLZZ6rcce/jSzEGqUkeOLy0b6q0+T6syHrxlsAGH7ZVoqC93Pd0lBqd6WguPWih7VHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/od.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+</head> 
+
+<body class="app"> 	
+    <header class="app-header fixed-top" style="background-color:#455a64" opacity="0.3">	   	            
+        <div class="app-header-inner">  
+	        <div class="container-fluid py-2">
+		        <div class="app-header-content" > 
+		            <div class="row justify-content-between align-items-center">
+			        
+				   
+		        </div>
+	            </div>
+	        </div>
+        </div>
+        <div id="app-sidepanel" class="app-sidepanel"> 
+	        <div id="sidepanel-drop" class="sidepanel-drop"></div>
+	        <div class="sidepanel-inner d-flex flex-column" style="background-color:#37474f;">
+		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+		        <div class="app-branding">
+		         <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/img/logo1.png" alt="logo"><span class="logo-text">JLEX</span></a>
+	             <p id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></p>
+		        </div>  
+		        
+			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1" style="background-color:#37474f;">
+				    <ul class="app-menu list-unstyled accordion" id="menu-accordion" >
+					    <li class="nav-item">
+					        
+					        <a class="nav-link active" href="clientarea.html">
+						        <span class="nav-icon">
+						         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
 		
-		<!-- load materialize library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+						         </span>
+								   <span class="nav-link-text">Account</span>
+					        </a>
+					    </li>
+					    <li class="nav-item">
+					       
+					        <a class="nav-link" href="balances.html">
+						        <span class="nav-icon">
+						       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+  <path d="M8 .95 14.61 4h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.379l.5 2A.5.5 0 0 1 15.5 17H.5a.5.5 0 0 1-.485-.621l.5-2A.5.5 0 0 1 1 14V7H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 4h.89L8 .95zM3.776 4h8.447L8 2.05 3.776 4zM2 7v7h1V7H2zm2 0v7h2.5V7H4zm3.5 0v7h1V7h-1zm2 0v7H12V7H9.5zM13 7v7h1V7h-1zm2-1V5H1v1h14zm-.39 9H1.39l-.25 1h13.72l-.25-1z"/>
+</svg>
+						         </span>
+								   <span class="nav-link-text">Wallet</span>
+					        </a>
+					    </li>
+					    <li class="nav-item">
+					        
+					        <a class="nav-link" href="trade.html">
+						        <span class="nav-icon">
+						      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+  <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+  <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+  <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Trade</span>
+					        </a>
+					    </li>
+					    <li class="nav-item">
+					        
+					        <a class="nav-link" href="orders.html">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
+  <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Orders</span>
+					        </a>
+					    </li>
+						 <li class="nav-item">
+					        
+					        <a class="nav-link" href="blog.html">
+						        <span class="nav-icon">
+						        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Coin/Token Data</span>
+					        </a>
+					    </li>
+					   <li class="nav-item">
+					       
+					        <a class="nav-link" href="dev.html">
+						        <span class="nav-icon">
+						       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
+  <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0h-13Zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5ZM12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0Zm2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0ZM1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1ZM1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25Z"/>
+</svg>
+						         </span>
+						   
+		                         <span class="nav-link-text">Developer</span>
+							</a>
+		                         <li class="nav-item">
+					       
+					        <a class="nav-link" href="help.html">
+						        <span class="nav-icon">
+						         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                                </svg>  
+						         </span>
+		                         <span class="nav-link-text">Help</span>
+					        </a> 
+							<a class="nav-link" href="index.html" id="logoutButton">
+						        <span class="nav-icon">
+						        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                                <path d="M7.5 1v7h1V1h-1z"/><path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                               </svg></span>
+		                         <span class="nav-link-text">Logout</span>
+					        </a>
+					    </li>				    
+				    </ul>
+			    </nav>
+			    <div class="app-sidepanel-footer">
+				    <nav class="app-nav app-nav-footer">
+					    <ul class="app-menu footer-menu list-unstyled">
+						   
+						
+					    </ul>
+				    </nav>
+			    </div>
+		       
+	        </div>
+	    </div>
+    </header>
+    
+    <div class="app-wrapper">
+	  <!-- future?>  
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">
+			    <h1 class="app-page-title">Account Summary</h1>
+			     <div class="row g-4 mb-4">
+				    <div class="col-6 col-lg-3">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Est. Portfolio Value</h4>
+							    <div class="stats-figure">$ 119.0934 USD</div>
+							    <div class="stats-meta text-success">
+								    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+</svg> 20%</div>
+						    </div>
+						   
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div>
+				    </div>
+				    <div class="col-6 col-lg-3">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Pending Orders</h4>
+							    <div class="stats-figure">23</div>
+							    <div class="stats-meta">
+								    Open</div>
+						    </div>
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div>
+				    </div>
+				    <div class="col-6 col-lg-3">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Transactions</h4>
+							    <div class="stats-figure">37</div>
+							    <div class="stats-meta">Processed</div>
+						    </div>
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div>
+				    </div>
+					<div class="col-6 col-lg-3">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Trade Limit</h4>
+							    <div class="stats-figure">$ 37.7521 USD</div>
+							   
+								  
+                             <a href="/rating.html">Find out how to raise your user trust rating here.</a>
+						    </div>
+						   
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div>
+			    </div>
+			    
+			    <div class="row g-4 mb-4">
+				    <div class="col-12 col-lg-6">
+				        <div class="app-card app-card-progress-list h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Trusted User Progress</h4>
+							        </div>
+						        </div>
+					        </div>
+					        <div class="app-card-body">
+							    <div class="item p-3">
+								    <div class="row align-items-center">
+									    <div class="col">
+										    <div class="title mb-1 ">Raise over $100.00 USD</div>
+											<p>*can be done by deposit, or referral deposit.
+										    <div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+									    </div>
+									    <div class="col-auto">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+									    </div>
+								    </div>
+								    <a class="item-link-mask" href="#"></a>
+							    </div>
+							    
+							    
+							     <div class="item p-3">
+								    <div class="row align-items-center">
+									    <div class="col">
+										    <div class="title mb-1 ">Complete over $1000.00 USD trades</div>
+											<p>*Can be any pairing in buy/sell direction</p>
+										    <div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+									    </div>
+									    <div class="col-auto">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+									    </div>
+								    </div>
+								    <a class="item-link-mask" href="#"></a>
+							    </div>
+							    
+							    <div class="item p-3">
+								    <div class="row align-items-center">
+									    <div class="col">
+										    <div class="title mb-1 ">Gain 10k+ views</div>
+											<p>*By gaining traffic via legitmate backlinks</p>
+										    <div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+									    </div>
+									    <div class="col-auto">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+									    </div>
+								    </div>
+								    <a class="item-link-mask" href="#"></a>
+							    </div>
+							    
+							    <div class="item p-3">
+								    <div class="row align-items-center">
+									    <div class="col">
+										    <div class="title mb-1 ">Gain 10+ referrals</div>
+											<p>*Must be active account for over 30+ days, and have  $2+ USD balance</p>
+										    <div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 52%;" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+									    </div>
+									    <div class="col-auto">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+									    </div>
+								    </div>
+								    <a class="item-link-mask" href="#"></a>
+							    </div>
 		
-		<!-- load scripts -->
-		<script async src="scripts.js"></script>
-	</head>
-	<body class="blue-grey darken-3" style="color: white;">
-		<nav class="blue accent-4">
-			<div class="nav-wrapper">
-				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
-				<ul id="nav-mobile" class="right">
-					<li id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></li>
-					<li><strong id="preloaded_client_name"></strong></li>
-					<li><a id="logoutButton">Log out</a></li>
-				</ul>
-			</div>
-		</nav>
-		<input type="hidden" id="has_preloads">
-		<div class="row">
-			<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Funds Manager</span>
-						<p>You can deposit, withdraw, or simply check your balances.</p>
-					</div>
-					<div class="card-action">
-						<a href="balances.html">Funds Manager</a>
-					</div>
-				</div>
-			</div>
-			<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Trade</span>
-						<p>Don't forget to be like Warren Buffet out there and reap in all those profits!</p>
-					</div>
-					<div class="card-action">
-						<a href="trade.html">Trade</a>
-					</div>
-				</div>
-			</div>
-			<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Orders Manager</span>
-						<p>View or cancel your active limit orders.</p>
-					</div>
-					<div class="card-action">
-						<a href="orders.html">Orders Manager</a>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</body>
-</html>
+					        </div>
+				        </div>
+			        </div>
+			        <div class="col-12 col-lg-6">
+				        <div class="app-card app-card-stats-table h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Diversity</h4>
+							        </div>
+							        <div class="col-auto">
+								        <div class="card-header-action">
+									        <a href="#">View report</a>
+								        </div>
+							        </div>
+						        </div>
+					        </div>
+					        <div class="app-card-body p-3 p-lg-4">
+						        <div class="table-responsive">
+							        <table class="table table-borderless mb-0">
+										<thead>
+											<tr>
+												<th class="meta">Asset</th>
+												<th class="meta stat-cell">Amount</th>
+												<th class="meta stat-cell">Portfolio</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><a href="#">Ethereum</a></td>
+												<td class="stat-cell">0.36</td>
+												<td class="stat-cell">
+												<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+									</svg> 
+									                30%
+									            </td>
+											</tr>
+											
+										</tbody>
+									</table>
+						        </div>
+					        </div>
+				        </div>
+			        </div>
+			    </div>        -->
+			    <div class="row g-4 mb-4">
+				    <div class="col-12 col-lg-4">
+					    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+						    <div class="app-card-header p-3 border-bottom-0">
+						        <div class="row align-items-center gx-3">
+							        <div class="col-auto">
+								        <div class="app-icon-holder">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+  <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+</svg>
+									    </div>
+						                
+							        </div>
+							        
+	    
+	    <footer class="app-footer">
+		    <div class="container text-center py-3">
+		      <small class="copyright"> PolyEUBI Token<a class="app-link" href="https://polyeubitoken.com" target="_blank"></a> JLEX</small>
+		       
+		    </div>
+	    </footer>
+	    
+    </div> 					
+
+</body>
+</html> 
