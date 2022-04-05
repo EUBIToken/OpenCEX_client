@@ -590,7 +590,9 @@ let _main = async function(){
 	callIfExists = undefined;
 	bindIfExists = undefined;
 	
-	M.AutoInit();
+	if(M){
+		M.AutoInit();
+	}
 };
 
 if (/complete|interactive|loaded/.test(document.readyState)) {
