@@ -9,28 +9,6 @@ alertList.forEach(function (alert) {
 });
 
 
-/* ===== Responsive Sidepanel ====== */
-const sidePanelToggler = document.getElementById('sidepanel-toggler'); 
-const sidePanel = document.getElementById('app-sidepanel');  
-const sidePanelDrop = document.getElementById('sidepanel-drop'); 
-const sidePanelClose = document.getElementById('sidepanel-close'); 
-
-
-
-window.addEventListener('resize', function(){
-	responsiveSidePanel(); 
-});
-
-
-
-
-
-
-
-
-
-
-
 /* ====== Mobile search ======= */
 const searchMobileTrigger = document.querySelector('.search-mobile-trigger');
 const searchBox = document.querySelector('.app-search-box');
