@@ -590,7 +590,7 @@ let _main = async function(){
 	callIfExists = undefined;
 	bindIfExists = undefined;
 	
-	if(M){
+	if(typeof M !== 'undefined'){
 		M.AutoInit();
 	}
 };
