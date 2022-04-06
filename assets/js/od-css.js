@@ -8,7 +8,7 @@
   window.onscroll = function () {
     const od_header = document.querySelector(".od-header");
     const sticky = od_header.offsetTop;
-    const logo = document.querySelector(".navbar-brand img");
+   
 
     if (window.pageYOffset > sticky) {
       od_header.classList.add("sticky");
@@ -16,24 +16,9 @@
       od_header.classList.remove("sticky");
     }
 
-    // === logo change
-    if (od_header.classList.contains("sticky")) {
-      logo.src = "assets/images/logo/logo-2.svg";
-    } else {
-      logo.src = "assets/images/logo/logo.svg";
-    }
+   
 
-    // show or hide the back-top-top button
-    const backToTop = document.querySelector(".back-to-top");
-    if (
-      document.body.scrollTop > 50 ||
-      document.documentElement.scrollTop > 50
-    ) {
-      backToTop.style.display = "flex";
-    } else {
-      backToTop.style.display = "none";
-    }
-  };
+   
 
   //===== close navbar-collapse when a  clicked
   let navbarToggler = document.querySelector(".navbar-toggler");
