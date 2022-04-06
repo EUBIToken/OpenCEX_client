@@ -1,76 +1,307 @@
-<html>
-	<head>
-		<title>Jessie Lesbian cryptocurrency exchange</title>
-		
-		<!-- load materialize library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		
-		<!-- load scripts -->
-		<script async src="scripts.js"></script>
-	</head>
-	<body class="blue-grey darken-3" style="color: white;">
-		<nav class="blue accent-4">
-			<div class="nav-wrapper">
-				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
-				<ul id="nav-mobile" class="right">
-					<li id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></li>
-					<li><a href="login.html">Log in</a></li>
-					<li><a href="register.html">Register</a></li>
-				</ul>
-			</div>
-		</nav>
-		<h4>Why trade with us?</h4>
-		<div class="row">
-			<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Advanced-technology software</span>
-						<p>We used OpenCEX - the open-source cryptocurrency exchange, since we believe that everyone should be able to audit the security of our exchange. Our software used the strictest safety checking possible to protect your funds from hackers.</p>
-					</div>
-					<div class="card-action">
-						<a href="https://www.github.com/EUBIToken/OpenCEX_server">View on GitHub</a>
-					</div>
-				</div>
-				<div>
-					<br/>
-				</div>
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">XTreme Low Fees&#174;</span>
-						<p>The only fees we charge are deposit and withdrawal fees, and those are just high enough to pay for blockchain transaction fees. Our trading fees are zero, and we have no minimum order sizes for immediate or cancel/fill or kill orders. Our revenues come mainly from advertisements.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Negative Balance Protection</span>
-						<p>You can never lose more than what you already deposited!</p>
-					</div>
-					<div class="card-action">
-						<a href="nbp.html">more info</a>
-					</div>
-				</div>
-				<div>
-					<br/>
-				</div>
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Quick and simple</span>
-						<p>Unlike other exchanges, we don't waste your time on identity verification and anti money laundering stuff. You can open as many accounts as you like, and be anonymous!</p>
-					</div>
-				</div>
-			</div>
-			<!--<div class="col m12 l6">
-				<div class="card blue-grey darken-2">
-					<div class="card-content white-text">
-						<span class="card-title">Made by LGBT people</span>
-						<p>The Jessie Lesbian Cryptocurrency Exchange is proudly made by LGBT people.</p>
-					</div>
-				</div>
-			</div>-->
-		</div>
-		<p><b>CRYPTOCURRENCIES INCLUDING, WITHOUT LIMITATION, BITCOIN AND ETHEREUM ARE VERY HIGH-RISK INVESTMENTS THAT ARE NOT SUITABLE FOR ALL INVESTORS. CRYPTOCURRENCIES ARE SUBJECT TO EXTREME PRICE VOLATILITY. SPECULATING ON CRYPTOCURRENCIES SHOULD ONLY BE PERFORMED BY SOPHISTICATED INVESTORS THAT ARE PREPARED TO LOSE THEIR ENTIRE INVESTMENT. CRYPTOCURRENCIES DO NOT HAVE ANY INTRINSIC VALUE AND MAY BECOME WORTHLESS. IF YOU ARE NOT PREPARED TO ACCEPT THESE RISKS, DO NOT INVEST IN CRYPTOCURRENCIES.</b></p>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jessie Lesbian Crypto Exchange</title>
+    <meta name="title" content="Jessie Lesbian - Polyeubi token cryptocurrency exchange">
+    <meta name="description" content="free open source 0% fee transparent exchange">
+    <meta name="keywords" content="new crypto, eubi, polygon, matic, polyeubi, open source, dex">
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/svg"/>
+	<!--  JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js" integrity="sha512-mULnawDVcCnsk9a4aG1QLZZ6rcce/jSzEGqUkeOLy0b6q0+T6syHrxlsAGH7ZVoqC93Pd0lBqd6WguPWih7VHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/od-css.js"></script>
+	<script async src="scripts.js"></script>
+	<!--- CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css" integrity="sha512-phGxLIsvHFArdI7IyLjv14dchvbVkEDaH95efvAae/y2exeWBQCQDpNFbOTdV1p4/pIa/XtbuDCnfhDEIXhvGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="assets/css/od-styles.css" /> 
+	
+
+</head>
+  <body>
+    <header class="od-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="index.html">
+                <p>JLEX</p>
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+              <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="od-menu-scroll" href="#about">About</a>
+                  </li>
+                  <li class="nav-item nav-item-has-children">
+                    <a href="javascript:void(0)">Resources</a>
+                    <ul class="od-submenu">
+                     <li class="od-submenu-item">
+                        <a href="pricing.html" class="od-submenu-link">
+                          Coin/Token Listing
+                        </a>
+                      </li>
+                      <li class="od-submenu-item">
+                        <a href="contact.html" class="od-submenu-link">
+                          Business Offers
+                        </a>
+                      </li>
+					   <li class="od-submenu-item">
+                        <a href="donate.html" class="od-submenu-link">
+                          Donate
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+                <a href="login.html" class="od-main-btn od-login-btn">
+                  Sign In
+                </a>
+                <a class="od-main-btn od-white-btn" href="javascript:void(0)">
+                  Sign Up
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="od-hero" id="home">
+      <div class="container">
+        <div class="row">
+          
+            <div class="od-hero-image wow fadeInUp" data-wow-delay=".25s">
+              <img src="assets/img/logo1.png" width="60%" style="border-radius:50%"/>/>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="od-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="od-section-title">
+              <span>Features</span>
+              <h2>Jessie Lesbian cryptocurrency exchange</h2>
+              <p>
+                Why trade with us?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="od-single-feature wow fadeInUp" data-wow-delay=".1s">
+              <div class="od-feature-icon">
+                <i class="icon-heart"></i>
+              </div>
+              <div class="od-feature-content">
+                <h3 class="od-feature-title">Xtreme Low Fees</h3>
+                <p class="od-feature-desc">
+                The only fees we charge are deposit and withdrawal fees, and those are just high enough to pay for blockchain transaction fees. Our trading fees are zero, and we have no minimum order sizes for immediate or cancel/fill or kill orders. Our revenues come mainly from advertisements.</p>
+				
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="od-single-feature wow fadeInUp" data-wow-delay=".15s">
+              <div class="od-feature-icon">
+                <i class="icon-eye"></i>
+              </div>
+              <div class="od-feature-content">
+                <h3 class="od-feature-title">Quick And Simple</h3>
+                <p class="od-feature-desc">
+                Unlike other exchanges, we don't waste your time on identity verification and anti money laundering stuff. You can open as many accounts as you like, and be anonymous!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="od-single-feature wow fadeInUp" data-wow-delay=".2s">
+              <div class="od-feature-icon">
+                <i class="icon-wallet"></i>
+              </div>
+              <div class="od-feature-content">
+                <h3 class="od-feature-title">Negative Balance Protection</h3>
+                <p class="od-feature-desc">
+                 You can never lose more than what you already deposited! </p>
+				 <a href="/nbp" target="_blank" class="od-feature-link">
+                  Read more...
+                </a>
+			  </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="od-single-feature wow fadeInUp" data-wow-delay=".25s">
+              <div class="od-feature-icon">
+               <i class="icon-layers"></i>
+              </div>
+              <div class="od-feature-content">
+                <h3 class="od-feature-title">Advanced Technology Software</h3>
+                <p class="od-feature-desc">
+               	We used OpenCEX - the open-source cryptocurrency exchange, since we believe that everyone should be able to audit the security of our exchange. Our software used the strictest safety checking possible to protect your funds from hackers.</p>
+
+                <a href="https://github.com/EUBIToken/OpenCEX.NET" target="_blank" class="od-feature-link">
+                  View on GITHUB
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <div class="od-section-title text-center mx-auto">
+             <!---  Save this div for marketcap page! -->
+          </div>
+          
+           </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="od-footer wow fadeInUp" data-wow-delay=".15s">
+      
+      <div class="od-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="od-widget">
+                <a href="index.html" class="od-footer-logo">
+                  <img src="assets/img/logo1.png" alt="logo" style="border-radius:77px"/>
+                </a>
+				<p class="od-widget-desc">
+                  JLEX ||PolyEUBI Exchange||
+                </p>
+                <p class="od-widget-desc">
+                  Anonymous transaction solutions for developers and traders by
+                  using advanced wallet technology.
+                </p>
+              
+              </div>
+            </div>
+           
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+              <div class="od-widget">
+                <h5 class="od-widget-title">Listed Assets</h5>
+                <ul class="od-widget-brands">
+                  <li>
+                    <a
+                      href=""
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/"
+                        
+                      />
+                    </a>
+                  </li>
+                 
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="od-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="od-footer-bottom-left">
+                <li>
+                  <a href="javascript:void(0)">Privacy policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Support policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Terms of service</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="od-footer-bottom-right">
+                All Rights Reserved
+                <a href="https://eubitoken.com" target="_blank" rel="nofollow"><h6>&copy; 2022 Jessie Lesbian for EUBInsurance</h6></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+   
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    
+
+   
+   
+    <script>
+    
+      const pageLink = document.querySelectorAll(".od-menu-scroll");
+
+      pageLink.forEach((elem) => {
+        elem.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector(elem.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+            offsetTop: 1 - 60,
+          });
+        });
+      });
+
+      // section menu active
+      function onScroll(event) {
+        const sections = document.querySelectorAll(".od-menu-scroll");
+        const scrollPos =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop;
+
+        for (let i = 0; i < sections.length; i++) {
+          const currLink = sections[i];
+          const val = currLink.getAttribute("href");
+          const refElement = document.querySelector(val);
+          const scrollTopMinus = scrollPos + 73;
+          if (
+            refElement.offsetTop <= scrollTopMinus &&
+            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+          ) {
+            document
+              .querySelector(".od-menu-scroll")
+              .classList.remove("active");
+            currLink.classList.add("active");
+          } else {
+            currLink.classList.remove("active");
+          }
+        }
+      }
+
+      window.document.addEventListener("scroll", onScroll);
+    </script>
+  </body>
 </html>
