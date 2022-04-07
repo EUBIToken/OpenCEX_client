@@ -23,6 +23,9 @@ app{
 	width: 100%;
 	height: 220 px;
 }
+.styled-table th{
+    max-width: 99px;
+}
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
