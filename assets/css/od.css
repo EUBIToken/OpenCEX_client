@@ -9,6 +9,7 @@ app{
 	background-color:#f70776;
 }
 .styled-table {
+    display: table;
     table-layout: auto;
     width: 100%;
     border-collapse: collapse;
