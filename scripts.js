@@ -53,8 +53,17 @@ let _main = async function(){
 	tempfunc = undefined;
 	smartGetElementById("devserverstatus").style.display = (useDevServer ? "list-item" : "none");
 	
+	//Use Materialize toast implementation if Materialize is loaded, otherwise fallback to Bootstrap toast implementation
+	//As a last-resort, use the browser's window.alert
 	const toast = async function(text){
-		M.toast({html: text});
+		if(typeof M !== 'undefined'){
+			M.toast({html: escapeHTML(text)});
+		} else if(typeof bootstrap !== 'undefined'){
+			document.getElementsByTagName("body")[0].innerHTML = (['<div style="z-index: 65536" class="alert alert-secondary alert-dismissible fade show" role="alert">' + escapeHTML(text) + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'].join("")) + document.getElementsByTagName("body")[0].innerHTML;
+		} else{
+			window.alert(text);
+		}
+		
 	};
 	
 	const prepxhtp = function(){
@@ -96,7 +105,7 @@ let _main = async function(){
 					callback(decoded_list.returns);
 				} else{
 					if(decoded_list.reason){
-						toast("Server returned error: " + escapeHTML(decoded_list.reason));
+						toast("Server returned error: " + decoded_list.reason);
 					} else{
 						toast("Server returned unknown error!");
 					}
@@ -214,7 +223,7 @@ let _main = async function(){
 						document.location.href = "clientarea.html";
 					} else{
 						if(decoded_list.reason){
-							toast("Server returned error: " + escapeHTML(decoded_list.reason));
+							toast("Server returned error: " + decoded_list.reason);
 							return;
 						} else{
 							toast("Server returned unknown error!");
@@ -550,7 +559,7 @@ let _main = async function(){
 						
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '"}}]'].join("")), async function(){
-								toast("withdrawal completed!");
+								toast("withdrawal sent!");
 							});
 						};
 					};
