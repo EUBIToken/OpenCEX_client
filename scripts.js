@@ -501,10 +501,10 @@ let _main = async function(){
 					const token4 = e[i][0];
 					const tokenDescriptor = tokenInfos[token4];
 					if(tokenDescriptor){
-						const depositModeSelector = tokenDescriptor.depositable ? 'modal-trigger" href="#depositModal' : 'disabled';
-						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'modal-trigger" href="#withdrawModal' : 'disabled';
+						const depositModeSelector = tokenDescriptor.depositable ? 'data-toggle="modal" data-target="#depositModal"' : 'disabled';
+						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'data-toggle="modal" data-target="#withdrawModal"' : 'disabled';
 						const token3 = escapeHTML(token4);
-						temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="col s6 btn btn-small waves-effect ', depositModeSelector , '" data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="col s6 btn btn-small waves-effect ', withdrawModeSelector, '" id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+						temp.push(['<tr class="row"><td class="col s4">', token3, '</td><td class="col s4">', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td class="col s4 row"><button id="deposit_button_', stri, '" class="btn btn-primary" ', depositModeSelector , ' data-deposit-token="', token3, '">deposit</button><button data-withdrawal-token="', token3, '" class="btn btn-primary" ', withdrawModeSelector, ' id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
 					}
 					
 				}

@@ -177,34 +177,46 @@
 		<div class="row">
 			<button id="requestShitcoinButton" class="nav-item">Request test shitcoins</button>
 		</div>
-		<div id="depositModal" >
-			<div class="modal-content">
-				<h4>Deposit token</h4>
-				<h6 id="preloaded_eth_deposit_address" style="display: none"></h6>
-				<h6 id="mintme_erc20_deposit_address" style="display: none"></h6>
-				<h6 id="polygon_erc20_deposit_address" style="display: none"></h6>
-				<h6 id="deposit_note"></h6>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="liButton">cancel</a>
-				<a href="#!" class="liButton" id="FinalizeTokenDeposit">finalize deposit</a>
+		<div class="modal fade" id="depositModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+					<div class="modal-header">
+						<h4>Deposit funds</h4>
+					</div>
+				<div class="modal-content">
+					<div class="modal-body">
+						<h6 id="preloaded_eth_deposit_address" style="display: none"></h6>
+						<h6 id="mintme_erc20_deposit_address" style="display: none"></h6>
+						<h6 id="polygon_erc20_deposit_address" style="display: none"></h6>
+						<h6 id="deposit_note"></h6>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="FinalizeTokenDeposit">finalize deposit</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div id="withdrawModal" class="modal blue-grey darken-2">
-			<div class="modal-content">
-				<h4>Withdraw funds</h4>
-				<div class="input-field col s12">
-					<input id="withdraw_address" type="text">
-					<label for="withdraw_address">Address</label>
+		<div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>Withdraw funds</h4>
+					</div>
+					<div class="modal-body">
+						<div class="input-field col s12">
+							<input id="withdraw_address" type="text">
+							<label for="withdraw_address">Address</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="withdraw_amount" type="text">
+							<label for="withdraw_amount">Amount</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="FinalizeTokenWithdrawal">withdraw</button>
+					</div>
 				</div>
-				<div class="input-field col s12">
-					<input id="withdraw_amount" type="text">
-					<label for="withdraw_amount">Amount</label>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="liButton">cancel</a>
-				<a href="#!" class="liButton" id="FinalizeTokenWithdrawal">withdraw</a>
 			</div>
 		</div>
 							    
