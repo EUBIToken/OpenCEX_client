@@ -162,9 +162,18 @@
 			    <h1 class="app-page-title">Wallet</h1>
 			     <input type="hidden" id="balances_manager">
 		         <input type="hidden" id="has_preloads">
-		        <table class="styled-table" id="preloaded_balances">
-					
-				</table>
+		        <table class="styled-table">
+			   <thead>
+				<tr>
+					<th class="col s4">Coin</th>
+					<th class="col s4">Balance</th>
+					<th class="col s4">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="preloaded_balances" >
+				
+			</tbody>
+		</table>
 		<div class="row">
 			<button id="requestShitcoinButton" class="nav-item">Request test shitcoins</button>
 		</div>
