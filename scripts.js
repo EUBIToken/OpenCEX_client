@@ -432,9 +432,13 @@ let _main = async function(){
 				}
 			});
 		};
+		smartGetElementById('lp_base_amount_label').innerHTML = "Amount of MintME";
+		smartGetElementById('lp_quote_amount_label').innerHTML = "Amount of PolyEUBI";
 		reloadChartsFromServer();
 		let bindPair = async function(primary, secondary){
 			smartGetElementById(["pair_selector", primary, secondary].join("_")).onclick = async function(){
+				smartGetElementById('lp_base_amount_label').innerHTML = "Amount of " + escapeHTML(primary);
+				smartGetElementById('lp_quote_amount_label').innerHTML = "Amount of " + escapeHTML(secondary);
 				selected_pri = primary;
 				primary_converter = get_conv(primary);
 				price_conv = get_price_conv(secondary);
@@ -472,6 +476,12 @@ let _main = async function(){
 			});
 		};
 		
+		smartGetElementById("addLiquidityButton").onclick = async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_lp", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "amount0": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_base_amount").value, price_conv)), '", "amount1": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_quote_amount").value, get_conv(buySelector ? selected_pri : selected_sec))), '"}}]'].join("")), async function(){
+				toast("Order placed successfully!");
+			});
+		};
+		
 	});
 	callIfExists("balances_manager", async function(){
 		//Unload unused Web3 modules
@@ -494,7 +504,15 @@ let _main = async function(){
 					"1000x":  {depositable: true, withdrawable: true, type: "mintme_erc20"},
 					BNB:  {depositable: true, withdrawable: true, type: "eth"},
 					shitcoin:  {depositable: false, withdrawable: false, type: "eth"},
-					scamcoin:  {depositable: false, withdrawable: false, type: "eth"}
+					scamcoin:  {depositable: false, withdrawable: false, type: "eth"},
+					LP_MATIC_PolyEUBI: {depositable: false, withdrawable: true, type: "lp"},
+					LP_MintME_MATIC: {depositable: false, withdrawable: true, type: "lp"},
+					LP_MintME_BNB: {depositable: false, withdrawable: true, type: "lp"},
+					LP_MintME_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp"},
+					LP_MintME_EUBI:  {depositable: false, withdrawable: true, type: "lp"},
+					LP_MintME_1000x:  {depositable: false, withdrawable: true, type: "lp"},
+					LP_BNB_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp"},
+					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp"}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
@@ -556,6 +574,12 @@ let _main = async function(){
 					smartGetElementById("withdraw_button_" + stri).onclick = async function(){
 						const token = this.dataset.withdrawalToken;
 						const token2 = escapeJSON(token);
+						
+						if(tokenInfos[token].type == 'lp'){
+							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
+						} else{
+							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
+						}
 						
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '"}}]'].join("")), async function(){
