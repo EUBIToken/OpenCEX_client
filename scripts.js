@@ -496,6 +496,7 @@ let _main = async function(){
 					shitcoin:  {depositable: false, withdrawable: false, type: "eth"},
 					scamcoin:  {depositable: false, withdrawable: false, type: "eth"}
 				};
+				temp.push('<tr><th class="col s4">Coin</th><th class="col s4">Balance</th><th class="col s4">Actions</th></tr>');
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
 					const token4 = e[i][0];
