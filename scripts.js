@@ -477,7 +477,7 @@ let _main = async function(){
 		};
 		
 		smartGetElementById("addLiquidityButton").onclick = async function(){
-			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_lp", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "amount0": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_base_amount").value, get_conv(primary))), '", "amount1": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_quote_amount").value, get_conv(secondary))), '"}}]'].join("")), async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_lp", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "amount0": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_base_amount").value, get_conv(selected_pri))), '", "amount1": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_quote_amount").value, get_conv(selected_sec))), '"}}]'].join("")), async function(){
 				toast("Order placed successfully!");
 			});
 		};
