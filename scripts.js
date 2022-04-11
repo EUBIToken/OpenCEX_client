@@ -497,22 +497,22 @@ let _main = async function(){
 			} else{
 				const temp = [];
 				const tokenInfos = {
-					MATIC: {depositable: true, withdrawable: true, type: "eth"},
-					MintME: {depositable: true, withdrawable: true, type: "eth"},
-					PolyEUBI: {depositable: true, withdrawable: true, type: "polygon_erc20"},
-					EUBI:  {depositable: true, withdrawable: true, type: "mintme_erc20"},
-					"1000x":  {depositable: true, withdrawable: true, type: "mintme_erc20"},
-					BNB:  {depositable: true, withdrawable: true, type: "eth"},
-					shitcoin:  {depositable: false, withdrawable: false, type: "eth"},
-					scamcoin:  {depositable: false, withdrawable: false, type: "eth"},
-					LP_MATIC_PolyEUBI: {depositable: false, withdrawable: true, type: "lp"},
-					LP_MintME_MATIC: {depositable: false, withdrawable: true, type: "lp"},
-					LP_MintME_BNB: {depositable: false, withdrawable: true, type: "lp"},
-					LP_MintME_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp"},
-					LP_MintME_EUBI:  {depositable: false, withdrawable: true, type: "lp"},
-					LP_MintME_1000x:  {depositable: false, withdrawable: true, type: "lp"},
-					LP_BNB_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp"},
-					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp"}
+					MATIC: {depositable: true, withdrawable: true, type: "eth", multichain: 0},
+					MintME: {depositable: true, withdrawable: true, type: "eth", multichain: 1},
+					PolyEUBI: {depositable: true, withdrawable: true, type: "polygon_erc20", multichain: 0},
+					EUBI:  {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					"1000x":  {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					BNB:  {depositable: true, withdrawable: true, type: "eth", multichain: 0},
+					shitcoin:  {depositable: false, withdrawable: false, type: "eth", multichain: 0},
+					scamcoin:  {depositable: false, withdrawable: false, type: "eth", multichain: 0},
+					LP_MATIC_PolyEUBI: {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_MATIC: {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_BNB: {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_EUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_1000x:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_BNB_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
@@ -537,6 +537,7 @@ let _main = async function(){
 						continue;
 					}
 					whatever.onclick = async function(){
+						smartGetElementById("FinalizeTokenDeposit").disabled = true;
 						const token = this.dataset.depositToken;
 						const tokenDescriptor = tokenInfos[token];
 						const token2 = escapeJSON(token);
@@ -544,29 +545,67 @@ let _main = async function(){
 							toast("Deposits are not supported for this token!");
 							return;
 						}
-						switch(tokenDescriptor.type){
-							case "eth":
-								smartGetElementById("preloaded_eth_deposit_address").style.display = "block";
-								smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
-								smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
-								break;
-							case "polygon_erc20":
-								smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
-								smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
-								smartGetElementById("polygon_erc20_deposit_address").style.display = "block";
-								break;
-							case "mintme_erc20":
-								smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
-								smartGetElementById("mintme_erc20_deposit_address").style.display = "block";
-								smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
-								break;
+						
+						let selectedChain2 = undefined;
+						const switchdepaddy = async function(tokenType2){
+							switch(tokenType2){
+								case "eth":
+									smartGetElementById("preloaded_eth_deposit_address").style.display = "block";
+									smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
+									smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
+									break;
+								case "polygon_erc20":
+									smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
+									smartGetElementById("mintme_erc20_deposit_address").style.display = "none";
+									smartGetElementById("polygon_erc20_deposit_address").style.display = "block";
+									break;
+								case "mintme_erc20":
+									smartGetElementById("preloaded_eth_deposit_address").style.display = "none";
+									smartGetElementById("mintme_erc20_deposit_address").style.display = "block";
+									smartGetElementById("polygon_erc20_deposit_address").style.display = "none";
+									break;
+								
+								default:
+									toast("Invalid token type!");
+									return;
+							}
+							smartGetElementById("FinalizeTokenDeposit").disabled = false;
+						};
+						const multichain = tokenDescriptor.multichain - 1;
+						if(multichain == -1){
+							//Simple token
+							selectedChain2 = "";
+							switchdepaddy(tokenDescriptor.type);
+						} else{
+							//Multichain token
+							const multichain_polygon_type = ["polygon_erc20"][multichain];
+							const multichain_MintME_type = ["eth"][multichain];
+							const elem2 = smartGetElementById("selectDepositBlockchain")'
+							let MintME_selector = async function(){
+								smartGetElementById("FinalizeTokenDeposit").disabled = true;
+								elem2.innerHTML = "Selected blockchain: MintME";
+								selectedChain2 = "MintME";
+								switchdepaddy(multichain_MintME_type[multichain]);
+							};
+							smartGetElementById("MintMEDepositChainSelector").onclick = MintME_selector;
+							smartGetElementById("PolygonDepositChainSelector").onclick = async function(){
+								smartGetElementById("FinalizeTokenDeposit").disabled = true;
+								elem2.innerHTML = "Selected blockchain: Polygon";
+								selectedChain2 = "Polygon";
+								switchdepaddy(multichain_polygon_type[multichain]);
+							};
 							
-							default:
-								toast("Invalid token type!");
-								return;
+							//Select default blockchain
+							MintME_selector();
 						}
+						
+						
 						smartGetElementById("FinalizeTokenDeposit").onclick = async function(){
-							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '"}}]'].join("")), async function(){
+							if(selectedChain2 == undefined){
+								toast("Chain selector fault!");
+								return;
+							}
+							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '", "blockchain": "', selectedChain2, '"}}]'].join("")), async function(){
 								toast("Thank you for your deposit! It will be credited to your account after 10 confirmations.");
 							});
 						};
