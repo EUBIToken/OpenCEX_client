@@ -615,18 +615,42 @@ let _main = async function(){
 					smartGetElementById("withdraw_button_" + stri).onclick = async function(){
 						const token = this.dataset.withdrawalToken;
 						const token2 = escapeJSON(token);
-						
+						let selectedChain2 = undefined;
+						smartGetElementById("FinalizeTokenWithdrawal").disabled = true;
 						if(tokenInfos[token].type == 'lp'){
+							selectedChain2 = "";
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
+							const MCDropdown2 = smartGetElementById("MCDropdown2")'
+							if(tokenInfos[token].multichain == -1){
+								MCDropdown2.style.display = "none";
+							} else{
+								const elem2 = smartGetElementById("selectWithdrawalBlockchain");
+								let MintME_selector = async function(){
+									elem2.innerHTML = "Selected blockchain: MintME";
+									selectedChain2 = "MintME";
+								};
+								smartGetElementById("MintMEWithdrawalChainSelector").onclick = MintME_selector;
+								smartGetElementById("PolygonWithdrawalChainSelector").onclick = async function(){
+									elem2.innerHTML = "Selected blockchain: Polygon";
+									selectedChain2 = "Polygon";
+								};
+								MCDropdown2.style.display = "block";
+								MintME_selector();
+							}
+								
 						}
-						
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
-							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '"}}]'].join("")), async function(){
+							if(selectedChain2 == undefined){
+								toast("Chain selector fault!");
+								return;
+							}
+							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '", "blockchain": "', selectedChain2, '"}}]'].join("")), async function(){
 								toast("withdrawal sent!");
 							});
 						};
+						smartGetElementById("FinalizeTokenWithdrawal").disabled = false;
 					};
 				}
 			}
