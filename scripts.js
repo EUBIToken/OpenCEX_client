@@ -421,7 +421,7 @@ let _main = async function(){
 						bid_ask.innerHTML = ["No buy orders, ask: ", escapeHTML(copied_web3_conv2dec(ask.toString(), price_conv))].join("");
 						return;
 					} else{
-						bid_ask.innerHTML = "No liquidity for instant trades, limit orders only!";
+						bid_ask.innerHTML = "No liquidity for instant trades, Uniswap.NET liquidity only!";
 						return;
 					}
 				}
@@ -601,7 +601,7 @@ let _main = async function(){
 			e = e[0];
 			for(let i = 0; i < e.length; i++){
 				const converter = get_conv(e[i][6] ? e[i][0] : e[i][1]);
-				temp.push(['<tr class="row"><td class="col s2">', escapeHTML(e[i][0]), "/", escapeHTML(e[i][1]), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][2], get_price_conv(e[i][1]))), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][3], converter)), '</td><td class="col s2">', escapeHTML(copied_web3_conv2dec(e[i][4], converter)), '</td><td class="col s2">', (e[i][6] ? "buy" : "sell"), '</td><td class="col s2 row"><button class="col s12 btn btn-small waves-effect" data-cancel-target="', escapeHTML(e[i][5]), '" id="cancel_button_', i.toString(), '">Cancel</button></td></tr>'].join(""));
+				temp.push(['<tr><td>', escapeHTML(e[i][0]), "/", escapeHTML(e[i][1]), '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][2], get_price_conv(e[i][1]))), '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][3], converter)), '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][4], converter)), '</td><td>', (e[i][6] ? "buy" : "sell"), '</td><td><button style="width: 100%" data-cancel-target="', escapeHTML(e[i][5]), '" id="cancel_button_', i.toString(), '">Cancel</button></td></tr>'].join(""));
 			}
 			preloaded_orders.innerHTML = temp.join("");
 			for(let i = 0; i < e.length; i++){
