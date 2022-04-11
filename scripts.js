@@ -622,7 +622,7 @@ let _main = async function(){
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
-							const MCDropdown2 = smartGetElementById("MCDropdown2")'
+							const MCDropdown2 = smartGetElementById("MCDropdown2");
 							if(tokenInfos[token].multichain == -1){
 								MCDropdown2.style.display = "none";
 							} else{
