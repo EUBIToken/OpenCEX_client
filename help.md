@@ -22,7 +22,7 @@ While OpenCEX.NET is still experimental, the Jessie Lesbian Cryptocurrency Excha
 ### Why do I have the option to choose blockchain when withdrawing and depositing MintME?
 Because we have a bridge that lets you migrate MintME to the Polygon blockchain and back. When you withdraw MintME to Polygon, MintME is debited from your trading account, and WMintME is minted on Polygon, and when you deposit MintME from Polygon, WMintME is burned on Polygon, and MintME is credited to your trading account.
 
-(https://polygonscan.com/token/0x2b7bede8a97021da880e6c84e8b915492d2ae216)[The token contract on the Polygon blockchain].
+[The token contract on the Polygon blockchain](https://polygonscan.com/token/0x2b7bede8a97021da880e6c84e8b915492d2ae216).
 
 #### NOTE: WMintME is a flash-mintable asset-backed token.
 
