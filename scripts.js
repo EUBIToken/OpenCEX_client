@@ -567,7 +567,7 @@ let _main = async function(){
 								
 								default:
 									toast("Invalid token type!");
-									return;
+									break;
 							}
 							smartGetElementById("FinalizeTokenDeposit").disabled = false;
 						};
@@ -575,9 +575,11 @@ let _main = async function(){
 						if(multichain == -1){
 							//Simple token
 							selectedChain2 = "";
+							smartGetElementById("MCDropdown").style.display = "hidden";
 							switchdepaddy(tokenDescriptor.type);
 						} else{
 							//Multichain token
+							smartGetElementById("MCDropdown").style.display = "block";
 							const multichain_polygon_type = ["polygon_erc20"][multichain];
 							const multichain_MintME_type = ["eth"][multichain];
 							const elem2 = smartGetElementById("selectDepositBlockchain");
