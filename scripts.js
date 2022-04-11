@@ -548,7 +548,6 @@ let _main = async function(){
 						
 						let selectedChain2 = undefined;
 						const switchdepaddy = async function(tokenType2){
-							console.log(tokenType2);
 							switch(tokenType2){
 								case "eth":
 									smartGetElementById("preloaded_eth_deposit_address").style.display = "block";
@@ -581,8 +580,8 @@ let _main = async function(){
 						} else{
 							//Multichain token
 							smartGetElementById("MCDropdown").style.display = "block";
-							const multichain_polygon_type = ["polygon_erc20"][multichain];
-							const multichain_MintME_type = ["eth"][multichain];
+							const multichain_polygon_type = ["polygon_erc20"];
+							const multichain_MintME_type = ["eth"];
 							const elem2 = smartGetElementById("selectDepositBlockchain");
 							let MintME_selector = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
