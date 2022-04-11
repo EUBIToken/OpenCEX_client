@@ -50,9 +50,7 @@ Deposits need at least 10 blockchain confirmations before they are credited to y
 If you forgot your password during the test launches, your funds are lost forever.
 
 ### What are your listing requirements?
-1. Listing fee: 50 MATIC (not required for extremely serious and partner projects such as Bitcoin and PolyEUBI).
-2. Verified contract source code (not required for tokens deployed using MintME.com).
-3. Legitimate and serious project (no scamcoins, memecoins, or shitcoins).
+[You can find them here](https://exchange.polyeubitoken.com/listing.html)
 
 Extremely serious cryptocurrencies, such as Ethereum, may be listed without contacting the team, free of charge.
 
