@@ -580,21 +580,21 @@ let _main = async function(){
 						} else{
 							//Multichain token
 							smartGetElementById("MCDropdown").style.display = "block";
-							const multichain_polygon_type = ["polygon_erc20"];
-							const multichain_MintME_type = ["eth"];
+							const multichain_polygon_type = ["polygon_erc20"][multichain];
+							const multichain_MintME_type = ["eth"][multichain];
 							const elem2 = smartGetElementById("selectDepositBlockchain");
 							let MintME_selector = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
 								elem2.innerHTML = "Selected blockchain: MintME";
 								selectedChain2 = "MintME";
-								switchdepaddy(multichain_MintME_type[multichain]);
+								switchdepaddy(multichain_MintME_type);
 							};
 							smartGetElementById("MintMEDepositChainSelector").onclick = MintME_selector;
 							smartGetElementById("PolygonDepositChainSelector").onclick = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
 								elem2.innerHTML = "Selected blockchain: Polygon";
 								selectedChain2 = "Polygon";
-								switchdepaddy(multichain_polygon_type[multichain]);
+								switchdepaddy(multichain_polygon_type);
 							};
 							
 							//Select default blockchain
