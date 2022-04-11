@@ -548,6 +548,7 @@ let _main = async function(){
 						
 						let selectedChain2 = undefined;
 						const switchdepaddy = async function(tokenType2){
+							console.log(tokenType2);
 							switch(tokenType2){
 								case "eth":
 									smartGetElementById("preloaded_eth_deposit_address").style.display = "block";
@@ -575,7 +576,7 @@ let _main = async function(){
 						if(multichain == -1){
 							//Simple token
 							selectedChain2 = "";
-							smartGetElementById("MCDropdown").style.display = "hidden";
+							smartGetElementById("MCDropdown").style.display = "none";
 							switchdepaddy(tokenDescriptor.type);
 						} else{
 							//Multichain token
