@@ -582,17 +582,16 @@ let _main = async function(){
 							smartGetElementById("MCDropdown").style.display = "block";
 							const multichain_polygon_type = ["polygon_erc20"][multichain];
 							const multichain_MintME_type = ["eth"][multichain];
-							const elem2 = smartGetElementById("selectDepositBlockchain");
 							let MintME_selector = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
-								elem2.innerHTML = "Selected blockchain: MintME";
+								smartGetElementById("selectDepositBlockchain").innerHTML = "Selected blockchain: MintME";
 								selectedChain2 = "MintME";
 								switchdepaddy(multichain_MintME_type);
 							};
 							smartGetElementById("MintMEDepositChainSelector").onclick = MintME_selector;
 							smartGetElementById("PolygonDepositChainSelector").onclick = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
-								elem2.innerHTML = "Selected blockchain: Polygon";
+								smartGetElementById("selectDepositBlockchain").innerHTML = "Selected blockchain: Polygon";
 								selectedChain2 = "Polygon";
 								switchdepaddy(multichain_polygon_type);
 							};
@@ -607,6 +606,8 @@ let _main = async function(){
 								toast("Chain selector fault!");
 								return;
 							}
+							smartGetElementById("MintMEDepositChainSelector").onclick = undefined;
+							smartGetElementById("PolygonDepositChainSelector").onclick = undefined;
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "deposit", "data": {"token": "', token2, '", "blockchain": "', selectedChain2, '"}}]'].join("")), async function(){
 								toast("Thank you for your deposit! It will be credited to your account after 10 confirmations.");
 							});
@@ -622,21 +623,19 @@ let _main = async function(){
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
-							const MCDropdown2 = smartGetElementById("MCDropdown2");
 							if(tokenInfos[token].multichain == -1){
-								MCDropdown2.style.display = "none";
+								smartGetElementById("MCDropdown2").style.display = "none";
 							} else{
-								const elem2 = smartGetElementById("selectWithdrawalBlockchain");
 								let MintME_selector = async function(){
-									elem2.innerHTML = "Selected blockchain: MintME";
+									smartGetElementById("selectWithdrawalBlockchain").innerHTML = "Selected blockchain: MintME";
 									selectedChain2 = "MintME";
 								};
 								smartGetElementById("MintMEWithdrawalChainSelector").onclick = MintME_selector;
 								smartGetElementById("PolygonWithdrawalChainSelector").onclick = async function(){
-									elem2.innerHTML = "Selected blockchain: Polygon";
+									smartGetElementById("selectWithdrawalBlockchain").innerHTML = "Selected blockchain: Polygon";
 									selectedChain2 = "Polygon";
 								};
-								MCDropdown2.style.display = "block";
+								smartGetElementById("MCDropdown2").style.display = "block";
 								MintME_selector();
 							}
 								
@@ -646,6 +645,8 @@ let _main = async function(){
 								toast("Chain selector fault!");
 								return;
 							}
+							smartGetElementById("MintMEWithdrawalChainSelector").onclick = undefined;
+							smartGetElementById("PolygonWithdrawalChainSelector").onclick = undefined;
 							bindResponseValidatorAndCall("OpenCEX_request_body=" + encodeURIComponent(['[{"method": "withdraw", "data": {"token": "', token2, '", "address": "', escapeJSON(addy.value), '", "amount": "', escapeJSON(copied_web3_conv2wei(amt.value, get_conv(token2))), '", "blockchain": "', selectedChain2, '"}}]'].join("")), async function(){
 								toast("withdrawal sent!");
 							});
