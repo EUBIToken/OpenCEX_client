@@ -580,7 +580,7 @@ let _main = async function(){
 							//Multichain token
 							const multichain_polygon_type = ["polygon_erc20"][multichain];
 							const multichain_MintME_type = ["eth"][multichain];
-							const elem2 = smartGetElementById("selectDepositBlockchain")'
+							const elem2 = smartGetElementById("selectDepositBlockchain");
 							let MintME_selector = async function(){
 								smartGetElementById("FinalizeTokenDeposit").disabled = true;
 								elem2.innerHTML = "Selected blockchain: MintME";
