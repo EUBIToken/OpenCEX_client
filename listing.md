@@ -10,26 +10,27 @@ In order to qualify the requirements must be met PRIOR to sending listing fees. 
               
   > Must meet requirements in list and have also proper listing fee.
     Upon acceptance you will be given an address which to send funds.
-    100% of funds will be burned
+    100% of funds will be swapped into PolyEUBI, which is then burned.
 
   Have an article prepared for the coin/token data (blog) page
 Your article will be your presentation to the world, try to make it shine
 Please note: we do not intend to 'trash' your project. If you receive a low rating...you are not only
 welcome but encouraged to work harder and be inspired to get better. After a period of "training" you are 
 allowed to resubmit <3
+
 ---------------------------------------
 
 Steps to listing your project:
 
 Step 1:
-Meet project basic elements.
-including, but not limited to the following:
-Homepage
-Blog branding
-Roadmap/ Usage details
-Community 
-Financial plans
-IRL usage network
+1. Meet project basic elements.
+2. including, but not limited to the following:
+3. Homepage
+4. Blog branding
+5. Roadmap/ Usage details
+6. Community 
+7. Financial plans
+8. IRL usage network
 
 Step 2:
 Wait for review.
