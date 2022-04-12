@@ -1,18 +1,19 @@
 Coin/Token/Asset Listing
-
+    Interested in listing your project?
     There are a few requirements and a small burn fee.
-Interested in listing your project?
+
              
-    Jessie Lesbian Cryptocurrency Exchange is happy to accept up and coming projects. Unlike many exchanges, we do 
+  Jessie Lesbian Cryptocurrency Exchange is happy to accept up and coming projects. Unlike many exchanges, we do 
 not rely heavily on huge listing fees. As a result, we would more look into project behind the coin/token/asset rather
-than the foward budget of the project team</p>
+than the foward budget of the project team
 In order to qualify the requirements must be met PRIOR to sending listing fees. Do NOT send fees without acceptance</p>
               
-    Must meet requirements in list and have also proper listing fee.
+  <p>  Must meet requirements in list and have also proper listing fee.
             
-	Upon acceptance you will be given an address which to send funds.</p>
-Have an article prepared for the coin/token data (blog) page</p>
-Your article will be your presentation to the world, try to make it shine</p>
+	Upon acceptance you will be given an address which to send funds.
+        100% of funds will be burned</p>
+Have an article prepared for the coin/token data (blog) page
+Your article will be your presentation to the world, try to make it shine
 Please note: we do not intend to 'trash' your project. If you receive a low rating...you are not only
 welcome but encouraged to work harder and be inspired to get better. After a period of "training" you are 
 allowed to resubmit <3
