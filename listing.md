@@ -8,11 +8,11 @@ not rely heavily on huge listing fees. As a result, we would more look into proj
 than the foward budget of the project team
 In order to qualify the requirements must be met PRIOR to sending listing fees. Do NOT send fees without acceptance</p>
               
-  <p>  Must meet requirements in list and have also proper listing fee.
-            
-	Upon acceptance you will be given an address which to send funds.
-        100% of funds will be burned</p>
-Have an article prepared for the coin/token data (blog) page
+  > Must meet requirements in list and have also proper listing fee.
+    Upon acceptance you will be given an address which to send funds.
+    100% of funds will be burned
+
+  Have an article prepared for the coin/token data (blog) page
 Your article will be your presentation to the world, try to make it shine
 Please note: we do not intend to 'trash' your project. If you receive a low rating...you are not only
 welcome but encouraged to work harder and be inspired to get better. After a period of "training" you are 
