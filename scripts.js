@@ -59,7 +59,7 @@ let _main = async function(){
 		if(typeof M !== 'undefined'){
 			M.toast({html: escapeHTML(text)});
 		} else if(typeof bootstrap !== 'undefined'){
-			document.getElementsByTagName("body")[0].innerHTML = (['<div style="z-index: 65536" class="alert alert-secondary alert-dismissible fade show" role="alert">' + escapeHTML(text) + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'].join("")) + document.getElementsByTagName("body")[0].innerHTML;
+			document.getElementsByTagName("body")[0].insertAdjacentHTML("afterbegin", ['<div style="z-index: 65536" class="alert alert-secondary alert-dismissible fade show" role="alert">' + escapeHTML(text) + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'].join(""));
 		} else{
 			window.alert(text);
 		}
