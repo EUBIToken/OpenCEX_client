@@ -500,6 +500,7 @@ let _main = async function(){
 					MATIC: {depositable: true, withdrawable: true, type: "eth", multichain: 0},
 					MintME: {depositable: true, withdrawable: true, type: "eth", multichain: 1},
 					PolyEUBI: {depositable: true, withdrawable: true, type: "polygon_erc20", multichain: 0},
+					Dai: {depositable: true, withdrawable: true, type: "polygon_erc20", multichain: 0},
 					EUBI:  {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
 					"1000x":  {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
 					BNB:  {depositable: true, withdrawable: true, type: "eth", multichain: 0},
@@ -522,7 +523,7 @@ let _main = async function(){
 						const depositModeSelector = tokenDescriptor.depositable ? 'data-toggle="modal" data-target="#depositModal"' : 'disabled';
 						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'data-toggle="modal" data-target="#withdrawModal"' : 'disabled';
 						const token3 = escapeHTML(token4);
-						temp.push(['<tr><td>', token3, '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td><button style="width: calc(50% - 0.5em); margin-right: 1em" id="deposit_button_', stri, '" class="btn btn-primary" ', depositModeSelector , ' data-deposit-token="', token3, '">deposit</button><button style="width: calc(50% - 0.5em)" data-withdrawal-token="', token3, '" class="btn btn-primary" ', withdrawModeSelector, ' id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+						temp.push(['<tr><td>', (token3 == "Dai" ? "Dai (Polygon)" : token3), '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td><button style="width: calc(50% - 0.5em); margin-right: 1em" id="deposit_button_', stri, '" class="btn btn-primary" ', depositModeSelector , ' data-deposit-token="', token3, '">deposit</button><button style="width: calc(50% - 0.5em)" data-withdrawal-token="', token3, '" class="btn btn-primary" ', withdrawModeSelector, ' id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
 					}
 					
 				}
