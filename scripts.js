@@ -50,8 +50,13 @@ let _main = async function(){
 		};
 	}
 	const smartGetElementById = tempfunc;
+	tempfunc = smartGetElementById("pair_selector_shitcoin_scamcoin");
+	if(tempfunc && useDevServer){
+		tempfunc.style.display = "block";
+	}
 	tempfunc = undefined;
 	smartGetElementById("devserverstatus").style.display = (useDevServer ? "list-item" : "none");
+	
 	
 	//Use Materialize toast implementation if Materialize is loaded, otherwise fallback to Bootstrap toast implementation
 	//As a last-resort, use the browser's window.alert
@@ -528,8 +533,26 @@ let _main = async function(){
 					if(tokenDescriptor){
 						const depositModeSelector = tokenDescriptor.depositable ? 'data-toggle="modal" data-target="#depositModal"' : 'disabled';
 						const withdrawModeSelector = tokenDescriptor.withdrawable ? 'data-toggle="modal" data-target="#withdrawModal"' : 'disabled';
-						const token3 = escapeHTML(token4);
-						temp.push(['<tr><td>', (token3 == "Dai" ? "Dai (Polygon)" : token3), '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td><button style="width: calc(50% - 0.5em); margin-right: 1em" id="deposit_button_', stri, '" class="btn btn-primary" ', depositModeSelector , ' data-deposit-token="', token3, '">deposit</button><button style="width: calc(50% - 0.5em)" data-withdrawal-token="', token3, '" class="btn btn-primary" ', withdrawModeSelector, ' id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+						let token3;
+						switch(token4){
+							case "Dai":
+								token3 = "Dai (Polygon)";
+								break;
+							case "scamcoin":
+							case "shitcoin":
+								if(useDevServer){
+									token3 = token4;
+								} else{
+									token3 = undefined;
+								}
+								break;
+							default:
+								token3 = escapeHTML(token4);
+								break;
+						}
+						if(token3){
+							temp.push(['<tr><td>', token3, '</td><td>', escapeHTML(copied_web3_conv2dec(e[i][1], get_conv(token4))), '</td><td><button style="width: calc(50% - 0.5em); margin-right: 1em" id="deposit_button_', stri, '" class="btn btn-primary" ', depositModeSelector , ' data-deposit-token="', token3, '">deposit</button><button style="width: calc(50% - 0.5em)" data-withdrawal-token="', token3, '" class="btn btn-primary" ', withdrawModeSelector, ' id="withdraw_button_', stri, '">withdraw</button></td></tr>'].join(""));
+						}
 					}
 					
 				}
