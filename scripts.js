@@ -540,6 +540,7 @@ let _main = async function(){
 								break;
 							case "scamcoin":
 							case "shitcoin":
+							case "LP_shitcoin_scamcoin":
 								if(useDevServer){
 									token3 = token4;
 								} else{
