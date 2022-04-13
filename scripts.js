@@ -459,6 +459,12 @@ let _main = async function(){
 		bindPair("MintME", "1000x");
 		bindPair("MintME", "EUBI");
 		
+		//Dai base
+		bindPair("Dai", "MATIC");
+		bindPair("Dai", "MintME");
+		bindPair("Dai", "PolyEUBI");
+		bindPair("Dai", "BNB");
+		
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
 		
