@@ -524,6 +524,10 @@ let _main = async function(){
 					LP_MintME_EUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_MintME_1000x:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_BNB_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_Dai_MintME: {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_Dai_PolyEUBI:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_Dai_MATIC:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_Dai_BNB:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
