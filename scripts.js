@@ -199,9 +199,14 @@ let _main = async function(){
 			let method = "login";
 			let renemberExtras = "";
 			if(register){
-				method = "create_account";
-				if(password != smartGetElementById("password2").value){
-					toast("Passwords do not match!");
+				if(smartGetElementById('tosAgree').checked){
+					method = "create_account";
+					if(password != smartGetElementById("password2").value){
+						toast("Passwords do not match!");
+						return;
+					}
+				} else{
+					toast("Please agree to TOS!");
 					return;
 				}
 			} else{
