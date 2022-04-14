@@ -205,7 +205,7 @@ let _main = async function(){
 					return;
 				}
 			} else{
-				renemberExtras = smartGetElementById("renemberme").value ? ', "renember": true' : ', "renember": false';
+				renemberExtras = smartGetElementById("renemberme").checked ? ', "renember": true' : ', "renember": false';
 			}
 			const captcha = document.getElementsByName('g-recaptcha-response')[0].value;
 			if(captcha == ""){
