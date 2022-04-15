@@ -16,7 +16,9 @@ Republish material from JLEX -PolyEUBI Cryptocurrency Exchange
 Sell, rent or sub-license material from JLEX -PolyEUBI Cryptocurrency Exchange
 Reproduce, duplicate or copy material from JLEX -PolyEUBI Cryptocurrency Exchange
 Redistribute content from JLEX -PolyEUBI Cryptocurrency Exchange
-This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the Terms And Conditions Template.
+This Agreement shall begin on the date hereof. The limitation with usage of modified source code @github is permissible, when and only if:
+ a) The user maintains all liabilities 
+ b) The working app/platform MUST be re-branded from association with JLEX and all associates.
 
 Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. JLEX, PolyEUBI, EUB Insurance does not filter, edit, publish or review articles prior to their presence on the website. articles do not reflect the views and opinions of JLEX, PolyEUBI, EUB Insurance,its agents and/or affiliates. articles reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, JLEX, PolyEUBI, EUB Insurance shall not be liable for the articles or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the articles on this website.
 
