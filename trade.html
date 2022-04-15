@@ -1,62 +1,57 @@
-<!DOCTYPE html>
-<html lang="en"> 
-<head>
-    <title>JLEX App</title>
-   <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Jessie Lesbian - Polyeubi token cryptocurrency exchange">
-    <meta name="description" content="free open source 0% fee transparent exchange">
-    <meta name="keywords" content="new crypto, eubi, polygon, matic, polyeubi, open source"> 
-    <link rel="shortcut icon" href="favicon.ico"> 
-    
-    <!-- JS-->
-	<script async src="scripts.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js" integrity="sha512-mULnawDVcCnsk9a4aG1QLZZ6rcce/jSzEGqUkeOLy0b6q0+T6syHrxlsAGH7ZVoqC93Pd0lBqd6WguPWih7VHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/od.css">
-	<!-- load chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0" integrity="sha256-4sbTzmCCW9LGrIh5OsN8V5Pfdad1F1MwhLAOyXKnsE0=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js" integrity="sha256-0xzDQpJxMs0tTxRsRNzM8fIqYYMmTQP36k5MW7LyYfE=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0" integrity="sha256-q8w2Mgq36OwAFKLLbdSi+aCHAb6WJhIswZ7N6k+xsf0=" crossorigin="anonymous"></script>
-	<script src="chart.js" type="text/javascript"></script>
-	<style>
-.cmc {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-</head> 
-
-<body class="app">  
-    <header class="app-header fixed-top" style="background-color:#37474f" opacity="0.3">	   	            
-     <div class="app-header-inner">  
-	 <h6 id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></h6>
-	 <h5 style="text-align:left">Jessie Lesbian-PolyEUBI Cryptocurrency Exchange v1.0</h5>
-	 <li><a href="clientarea.html">Return HOME</a></li>
-	 </div>
-	</header>
-    <div style="background-color:#455a64;">
-	   <div>
-			<section>
-			<input type="hidden" id="trading_room">
+<html>
+	<head>
+		<title>Jessie Lesbian cryptocurrency exchange</title>
+		
+		<!-- load materialize library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<!-- load Web3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0/web3.min.js" integrity="sha512-C63V0mFzwl8KV2fRz0QJNKX0d9877urOLSUq5WUq8nUOhDl69hKdGr9mAvl57k47GNjqEMAtiufsvDnk7xs8+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<!-- load chart.js -->
+		<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0" integrity="sha256-4sbTzmCCW9LGrIh5OsN8V5Pfdad1F1MwhLAOyXKnsE0=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js" integrity="sha256-0xzDQpJxMs0tTxRsRNzM8fIqYYMmTQP36k5MW7LyYfE=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0" integrity="sha256-q8w2Mgq36OwAFKLLbdSi+aCHAb6WJhIswZ7N6k+xsf0=" crossorigin="anonymous"></script>
+		<script src="chart.js" type="text/javascript"></script>
+		
+		<!-- load scripts -->
+		<script async src="scripts.js"></script>
+		
+	</head>
+	<body class="blue-grey darken-3" style="color: white;">
+		<nav class="blue accent-4">
+			<div class="nav-wrapper">
+				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
+				<ul id="nav-mobile" class="right">
+					<li id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></li>
+					<li><a href="clientarea.html">Client area</a></li>
+				</ul>
+			</div>
+		</nav>
+		<input type="hidden" id="trading_room">
 		<ul style="z-index: 2022" class="sidenav blue-grey darken-2" id="slide-out">
 			<!-- MATIC base -->
 			<li class="blue-grey darken-1" id="pair_selector_MATIC_PolyEUBI">MATIC/PolyEUBI</li>
 			
 			<!-- MintME base -->
-			<li class="blue-grey darken-1" id="pair_selector_MintME_MATIC">MintME/MATIC</li>
+			<li class="blue-grey" id="pair_selector_MintME_MATIC">MintME/MATIC</li>
 			<li class="blue-grey darken-1" id="pair_selector_MintME_BNB">MintME/BNB</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_PolyEUBI">MintME/PolyEUBI</li>
+			<li class="blue-grey" id="pair_selector_MintME_PolyEUBI">MintME/PolyEUBI</li>
 			<li class="blue-grey darken-1" id="pair_selector_MintME_EUBI">MintME/EUBI</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_1000x">MintME/1000x</li>
+			<li class="blue-grey" id="pair_selector_MintME_1000x">MintME/1000x</li>
+			
+			<!-- Dai base -->
+			<li class="blue-grey darken-1" id="pair_selector_Dai_PolyEUBI">Dai/PolyEUBI</li>
+			<li class="blue-grey" id="pair_selector_Dai_MATIC">Dai/MATIC</li>
+			<li class="blue-grey darken-1" id="pair_selector_Dai_BNB">Dai/BNB</li>
+			<li class="blue-grey" id="pair_selector_Dai_MintME">Dai/MintME</li>
 			
 			<!-- BNB base -->
 			<li class="blue-grey darken-1" id="pair_selector_BNB_PolyEUBI">BNB/PolyEUBI</li>
 			
+			<!-- testcoins -->
+			<li class="blue-grey" id="pair_selector_shitcoin_scamcoin" style="display: none">shitcoin/scamcoin</li>
 
 		</ul>
 		<div class="row blue-grey darken-2">
@@ -114,15 +109,5 @@
 		</div>
 		<a style="z-index: 2021" class="btn-floating btn-small waves-effect waves-light sidenav-trigger" data-target="slide-out">></a>
 		
-		    </section> 
-		
-	    </div>
-    
-    </div>
-    <footer class="app-footer">
-		  <p>All Rights Reserved<p>
-		  <h6>&copy; 2022 Jessie Lesbian for EUBInsurance</h6>
-	    </footer>
-
-</body>
-</html> 
+	</body>
+</html>
