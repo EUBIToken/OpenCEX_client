@@ -64,7 +64,7 @@ Have you read and met the requirements?
 Click the link below to fill out application
 Please allow time for review
 You will be notified via your method you chosen
-<a href="#" target="_blank" referrer="anonymous">Apply HERE</a>
+<a href="listsubmit.html" target="_blank" referrer="anonymous">Apply HERE</a>
     
 
 
