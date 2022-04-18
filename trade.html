@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Jessie Lesbian cryptocurrency exchange</title>
+		<title>JLEX App</title>
 		
 		<!-- load materialize library -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,44 +17,143 @@
 		
 		<!-- load scripts -->
 		<script async src="scripts.js"></script>
-		
+		<style>
+	ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  background-color: #333;
+}
+
+		li {
+	float: left;
+    border-right: 3px solid #455a64;
+    border-left: 3px solid #455a64;
+    margin-left: 2px;
+    margin-right: 2px;
+	text-color: white;
+}
+      h6,p{
+	  color: white;
+ }
+ .navbar {
+  overflow: hidden;
+  background-color: #455a64;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: solid 0.5px;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  width: 10em;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: yellow;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+    border-right: 3px solid #455a64;
+    border-left: 3px solid #455a64;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+	 
+
+		</style>
 	</head>
-	<body class="blue-grey darken-3" style="color: white;">
-		<nav class="blue accent-4">
+	<body class="blue-grey darken-3" style="background-color:#37474f;">
+		<nav style="background-color: #455a64;">
 			<div class="nav-wrapper">
-				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
+				<h6 class="brand-logo left"><invalid style="color: pink">JLEX</invalid></h6>
 				<ul id="nav-mobile" class="right">
 					<li id="devserverstatus" style="display: none"><a href="devserver.html">Connected to dev server</a></li>
-					<li><a href="clientarea.html">Client area</a></li>
+					<li><a href="clientarea.html">Return to HOME</a></li>
 				</ul>
 			</div>
+		
 		</nav>
-		<input type="hidden" id="trading_room">
-		<ul style="z-index: 2022" class="sidenav blue-grey darken-2" id="slide-out">
-			<!-- MATIC base -->
-			<li class="blue-grey darken-1" id="pair_selector_MATIC_PolyEUBI">MATIC/PolyEUBI</li>
-			
-			<!-- MintME base -->
-			<li class="blue-grey" id="pair_selector_MintME_MATIC">MintME/MATIC</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_BNB">MintME/BNB</li>
-			<li class="blue-grey" id="pair_selector_MintME_PolyEUBI">MintME/PolyEUBI</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_EUBI">MintME/EUBI</li>
-			<li class="blue-grey" id="pair_selector_MintME_1000x">MintME/1000x</li>
-			
-			<!-- Dai base -->
-			<li class="blue-grey darken-1" id="pair_selector_Dai_PolyEUBI">Dai/PolyEUBI</li>
-			<li class="blue-grey" id="pair_selector_Dai_MATIC">Dai/MATIC</li>
-			<li class="blue-grey darken-1" id="pair_selector_Dai_BNB">Dai/BNB</li>
-			<li class="blue-grey" id="pair_selector_Dai_MintME">Dai/MintME</li>
-			
-			<!-- BNB base -->
-			<li class="blue-grey darken-1" id="pair_selector_BNB_PolyEUBI">BNB/PolyEUBI</li>
-			
-			<!-- testcoins -->
-			<li class="blue-grey" id="pair_selector_shitcoin_scamcoin" style="display: none">shitcoin/scamcoin</li>
-
-		</ul>
+		<hr/>
 		<div class="row blue-grey darken-2">
+				<div class="col s12">
+         <div class="subnav">
+           <button class="subnavbtn">MATIC</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_MATIC_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+             </div>
+           </div>
+		   <div class="subnav">
+           <button class="subnavbtn">BNB</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_BNB_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+             </div>
+           </div>
+		   <div class="subnav">
+           <button class="subnavbtn">MintME</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_MintME_MATIC" class="btn waves-effect col s1">MATIC</button>
+				<button id="pair_selector_MintME_BNB" class="btn waves-effect col s1">BNB</button>
+				<button id="pair_selector_MintME_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+				<button id="pair_selector_MintME_EUBI" class="btn waves-effect col s1">EUBI</button>
+				<button id="pair_selector_MintME_1000X" class="btn waves-effect col s1">1000X</button>
+             </div>
+           </div>
+		   <div class="subnav">
+           <button class="subnavbtn">Dai</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_Dai_MintME" class="btn waves-effect col s1">MintME</button>
+				<button id="pair_selector_Dai_MATIC" class="btn waves-effect col s1">MATIC</button>
+				<button id="pair_selector_Dai_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+				<button id="pair_selector_Dai_BNB" class="btn waves-effect col s1">BNB</button>
+             </div>
+           </div>
+	</div>
+		    <input type="hidden" id="trading_room">
 			<canvas class="col l6 m12 s12" id="tradingchart" style="height: 10em"></canvas>
 			<h6 id="bid_ask"></h6>
 			<div class="col l6 m12 s12 row">
@@ -107,7 +206,6 @@
 				<button class="btn waves-effect col s12" id="addLiquidityButton">Add liquidity</button>
 			</div>
 		</div>
-		<a style="z-index: 2021" class="btn-floating btn-small waves-effect waves-light sidenav-trigger" data-target="slide-out">></a>
-		
+	
 	</body>
 </html>
