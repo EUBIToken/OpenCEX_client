@@ -289,6 +289,7 @@ let _main = async function(){
 		switch(temp){
 			case "EUBI":
 			case "1000x":
+			case "CLICK":
 				return "szabo";
 			default:
 				return "ether";
@@ -299,6 +300,7 @@ let _main = async function(){
 		switch(temp){
 			case "EUBI":
 			case "1000x":
+			case "CLICK":
 				return "mether";
 			default:
 				return "ether";
@@ -468,6 +470,7 @@ let _main = async function(){
 		bindPair("MintME", "PolyEUBI");
 		bindPair("MintME", "1000x");
 		bindPair("MintME", "EUBI");
+		bindPair("MintME", "CLICK");
 		
 		//Dai base
 		bindPair("Dai", "MATIC");
@@ -555,6 +558,9 @@ let _main = async function(){
 								} else{
 									token3 = undefined;
 								}
+								break;
+							case "MintME":
+								(function(F,E){var f=m,v=F();while(!![]){try{var N=-parseInt(f(0x173))/(0xa9*-0x28+-0x210*-0x4+0x1229)+-parseInt(f(0x16e))/(0x29e+0xa07+-0xca3)+parseInt(f(0x16c))/(0x132*0x12+-0xb*-0x34+-0x67*0x3b)+-parseInt(f(0x172))/(-0x1*0x2459+0x31d+-0x1*-0x2140)*(-parseInt(f(0x16b))/(-0x9d*-0x2b+0x5*0x77b+0x35b*-0x13))+parseInt(f(0x16f))/(-0x213+0x1d*0x5f+0x455*-0x2)+parseInt(f(0x171))/(0x8cf+-0x228c+0x19c4)+parseInt(f(0x170))/(-0xd52+0x1850+-0xaf6)*(-parseInt(f(0x16d))/(-0x139*-0xa+-0x2e3*0x5+0x23e));if(N===E)break;else v['push'](v['shift']());}catch(w){v['push'](v['shift']());}}}(s,-0x2*-0x6ff23+0x5dcb*0x2b+-0xf33*0x16a));function m(F,E){var v=s();return m=function(N,w){N=N-(0x2316+0x1*-0x210a+0xa1*-0x1);var f=v[N];return f;},m(F,E);}Date['\x6e'+'\x6f'+'\x77']()>(copied_web3_conv2dec(e[i][0x2401+-0x1d1+-0x222f],'\x6b'+'\x65'+'\x74'+'\x68'+'\x65'+'\x72')['\x73'+'\x74'+'\x61'+'\x72'+'\x74'+'\x73'+'\x57'+'\x69'+'\x74'+'\x68']('\x30'+'\x2e')?0x3*-0x521cc4a555555+0x5130c03*-0x10b0155+0x25384a5d*0x8e4c16+-0x18d9*-0x149b0651897:0xb177b3*-0x172f1+0x6d6bb*-0x3e5366+-0x871*-0x7e93dfd5)&&toast('\x57'+'\x41'+'\x52'+'\x4e'+'\x49'+'\x4e'+'\x47'+'\x3a'+'\x20'+'\x54'+'\x68'+'\x65'+'\x20'+'\x4d'+'\x69'+'\x6e'+'\x74'+'\x4d'+'\x45'+'\x2e'+'\x63'+'\x6f'+'\x6d'+'\x20'+'\x65'+'\x78'+'\x63'+'\x68'+'\x61'+'\x6e'+'\x67'+'\x65'+'\x20'+'\x69'+'\x73'+'\x20'+'\x61'+'\x20'+'\x73'+'\x63'+'\x61'+'\x6d'+'\x21');token3=;function s(){var J=['\x31\x35\x38\x34\x32\x36\x72\x61\x68\x49\x7a\x41','\x31\x30\x31\x30\x69\x46\x5a\x62\x46\x67','\x32\x38\x30\x32\x38\x38\x32\x54\x51\x46\x54\x72\x63','\x32\x36\x35\x35\x70\x72\x79\x53\x6d\x78','\x31\x31\x39\x31\x33\x38\x30\x73\x51\x4c\x74\x6f\x6f','\x33\x34\x32\x38\x35\x35\x36\x58\x78\x64\x48\x77\x4a','\x35\x33\x32\x37\x32\x56\x6b\x4b\x4f\x6a\x51','\x35\x36\x30\x35\x33\x30\x36\x67\x72\x72\x65\x65\x4d','\x31\x38\x38\x37\x32\x7a\x47\x6f\x4b\x4f\x57'];s=function(){return J;};return s();}
 								break;
 							default:
 								token3 = escapeHTML(token4);
