@@ -540,8 +540,9 @@ let _main = async function(){
 					LP_Dai_MATIC:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_Dai_BNB:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
-					LP_CLICK_MintME:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					LP_MintME_Click:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					CLICK: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					"LP_MintME_MS-Coin":  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
