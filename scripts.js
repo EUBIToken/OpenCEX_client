@@ -290,6 +290,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "MS-Coin":
 				return "szabo";
 			default:
 				return "ether";
@@ -301,6 +302,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "MS-Coin":
 				return "mether";
 			default:
 				return "ether";
@@ -471,6 +473,7 @@ let _main = async function(){
 		bindPair("MintME", "1000x");
 		bindPair("MintME", "EUBI");
 		bindPair("MintME", "CLICK");
+		bindPair("MintME", "MS-Coin");
 		
 		//Dai base
 		bindPair("Dai", "MATIC");
@@ -538,7 +541,8 @@ let _main = async function(){
 					LP_Dai_BNB:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_CLICK_MintME:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
-					CLICK:  {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
+					CLICK: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
