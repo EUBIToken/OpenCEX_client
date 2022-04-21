@@ -484,9 +484,6 @@ let _main = async function(){
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
 		
-		//testcoins
-		bindPair("shitcoin", "scamcoin");
-		
 		//END trading pair registrations
 		
 		bindPair = undefined;
