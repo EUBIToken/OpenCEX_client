@@ -673,7 +673,7 @@ let _main = async function(){
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
-							if(tokenInfos[token].multichain == -1){
+							if(tokenInfos[token].multichain == 0){
 								smartGetElementById("MCDropdown2").style.display = "none";
 							} else{
 								let MintME_selector = async function(){
