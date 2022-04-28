@@ -50,7 +50,7 @@ let _main = async function(){
 		};
 	}
 	const smartGetElementById = tempfunc;
-	tempfunc = smartGetElementById("pair_selector_shitcoin_scamcoin");
+	tempfunc = smartGetElementById("hide_shitcoins_in_prod");
 	if(tempfunc && useDevServer){
 		tempfunc.style.display = "block";
 	}
