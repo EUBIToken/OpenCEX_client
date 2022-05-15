@@ -11,6 +11,9 @@ One of the reason leading to the failure of MintME.com is low liquidity. Our Uni
 ### MintME-Polygon bridge
 Bridge your MintME over to Polygon and use the latest DeFi products, such as Uniswap V3, Balancer, and 1inch. You can bridge MintME back from Polygon as well.
 
+### Cash-settlement derivatives trading
+Hedge against losses by buying put options, or speculate on illiquid assets with binary options, your choice! Unlike normal assets, derivatives are settled on expiry with no impact on the underlying market, which frees you from having to worry about liquidity.
+
 ## FAQs
 
 ### What software did you use?
@@ -55,7 +58,7 @@ If you forgot your password during the test launches, your funds are lost foreve
 Extremely serious cryptocurrencies, such as Ethereum, may be listed without contacting the team, free of charge.
 
 ### Why no trading fees?
-Because we have advertisements, and trading fees are bad for liquidity.
+Because we have advertisements (in the future), and trading fees are bad for liquidity.
 
 ### Can you explain the 3 order types?
 1. Limit order: An order to buy or sell at a specific price or better. This is the only order type that comes with a minimum order size, and the only order type that is ever admitted to the order book on the Jessie Lesbian Cryptocurrency Exchange.
@@ -73,7 +76,15 @@ WestnileOD: Most frontend work
 
 EUBI: Hosting fees, and marketing in the future
 
-## Known bugs (will fix later)
-1. Renember me not working
-2. Balances page freeze after deposit/withdraw
+## About derivatives trading
+Our derivatives trading market is superior to other brokers (e.g PocketOption, IQ Option) since we don't win your losing trades.
 
+<b>NOTE: All JLEX derivatives are pre-collateralized and cash-settled!</b>
+
+### Put options
+In a put option, the seller pays the buyer if the underlying asset trades below the strike price on expiry. For example, the seller of a Bitcoin put option with a strike price of $60000 will pay the buyer $10000 if bitcoin trades at $50000 on expiry. Put options are great for hedging against underlying asset depreciation.
+
+### Binary options (coming soon)
+Binary options only have 2 outcomes: win or lose. If the underlying asset trades above the strike price on expiry, the buyer wins and get the seller's collateral, and if the underlying asset trades below the strike price, the seller wins and gets their collateral back.
+
+### And many other types of derivatives are waiting to be listed in the future!

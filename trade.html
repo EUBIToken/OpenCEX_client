@@ -121,46 +121,51 @@
 		<hr/>
 		<div class="row blue-grey darken-2">
 				<div class="col s12">
-	          <div class="subnav">
+         <div class="subnav">
            <button class="subnavbtn">MATIC</button>
              <div class="subnav-content row">
-                <button id="pair_selector_MATIC_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+                <button id="pair_selector_MATIC_PolyEUBI" class="btn waves-effect col s2">PolyEUBI</button>
              </div>
            </div>
 		   <div class="subnav">
            <button class="subnavbtn">BNB</button>
              <div class="subnav-content row">
-                <button id="pair_selector_BNB_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+                <button id="pair_selector_BNB_PolyEUBI" class="btn waves-effect col s2">PolyEUBI</button>
              </div>
            </div>
 		   <div class="subnav">
            <button class="subnavbtn">MintME</button>
              <div class="subnav-content row">
-                <button id="pair_selector_MintME_MATIC" class="btn waves-effect col s1">MATIC</button>
-				<button id="pair_selector_MintME_BNB" class="btn waves-effect col s1">BNB</button>
-				<button id="pair_selector_MintME_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
-				<button id="pair_selector_MintME_EUBI" class="btn waves-effect col s1">EUBI</button>
-				<button id="pair_selector_MintME_1000x" class="btn waves-effect col s1">1000x</button>
-				<button id="pair_selector_MintME_CLICK" class="btn waves-effect col s1">CLICK</button>
-				<button id="pair_selector_MintME_MS-Coin" class="btn waves-effect col s1">MS-Coin</button>
+                <button id="pair_selector_MintME_MATIC" class="btn waves-effect col s2">MATIC</button>
+				<button id="pair_selector_MintME_BNB" class="btn waves-effect col s2">BNB</button>
+				<button id="pair_selector_MintME_PolyEUBI" class="btn waves-effect col s2">PolyEUBI</button>
+				<button id="pair_selector_MintME_EUBI" class="btn waves-effect col s2">EUBI</button>
+				<button id="pair_selector_MintME_1000x" class="btn waves-effect col s2">1000x</button>
+				<button id="pair_selector_MintME_CLICK" class="btn waves-effect col s2">CLICK</button>
+				<button id="pair_selector_MintME_Haoma" class="btn waves-effect col s2">Haoma</button>
+				<button id="pair_selector_MintME_MS-Coin" class="btn waves-effect col s2">MS-Coin</button>
+				<button id="pair_selector_MintME_MintME_PUT" class="btn waves-effect col s2">MintME put option</button>
              </div>
            </div>
 		   <div class="subnav">
            <button class="subnavbtn">Dai</button>
              <div class="subnav-content row">
-                <button id="pair_selector_Dai_MintME" class="btn waves-effect col s1">MintME</button>
-				<button id="pair_selector_Dai_MATIC" class="btn waves-effect col s1">MATIC</button>
-				<button id="pair_selector_Dai_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
-				<button id="pair_selector_Dai_BNB" class="btn waves-effect col s1">BNB</button>
+                <button id="pair_selector_Dai_MintME" class="btn waves-effect col s2">MintME</button>
+				<button id="pair_selector_Dai_MATIC" class="btn waves-effect col s2">MATIC</button>
+				<button id="pair_selector_Dai_PolyEUBI" class="btn waves-effect col s2">PolyEUBI</button>
+				<button id="pair_selector_Dai_BNB" class="btn waves-effect col s2">BNB</button>
              </div>
            </div>
 		   <div class="subnav" id="hide_shitcoins_in_prod">
            <button class="subnavbtn">shitcoin</button>
              <div class="subnav-content row">
-                <button id="pair_selector_shitcoin_scamcoin" class="btn waves-effect col s1">scamcoin</button>
+                <button id="pair_selector_shitcoin_scamcoin" class="btn waves-effect col s2">scamcoin</button>
              </div>
            </div>
 	</div>
+		<div class="col s12">
+			<p id="DerivativesInformation">Spot market</p>
+		</div>
 		    <input type="hidden" id="trading_room">
 			<canvas class="col l6 m12 s12" id="tradingchart" style="height: 10em"></canvas>
 			<h6 id="bid_ask"></h6>
@@ -200,7 +205,7 @@
 				</div>
 								
 			</div>
-			<div class="col l6 m12 s12 row">
+			<div class="col l6 m12 s12 row" id="liquidity_menu">
 				<h6>Provide Uniswap.NET liquidity</h6>
 				<div class="input-field col s12">
 					<input id="lp_base_amount" type="text">
@@ -212,6 +217,15 @@
 				</div>
 				<p>Uniswap.NET is an automated market maker that can help you make money by market making.</p>
 				<button class="btn waves-effect col s12" id="addLiquidityButton">Add liquidity</button>
+			</div>
+			<div class="col l6 m12 s12 row" style="display: none" id="derivatives_menu">
+				<h6>Underwrite derivatives (short selling)</h6>
+				<div class="input-field col s12">
+					<input id="derivatives_amount" type="text">
+					<label for="derivatives_amount">Output amount</label>
+				</div>
+				<p>Dai will be debited from your account to cover derivatives!</p>
+				<button class="btn waves-effect col s12" id="createDerivativesButton">Underwrite derivatives</button>
 			</div>
 		</div>
 	

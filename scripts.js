@@ -290,6 +290,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "Haoma":
 			case "MS-Coin":
 				return "szabo";
 			default:
@@ -302,6 +303,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "Haoma":
 			case "MS-Coin":
 				return "mether";
 			default:
@@ -457,6 +459,21 @@ let _main = async function(){
 				primary_converter = get_conv(primary);
 				price_conv = get_price_conv(secondary);
 				selected_sec = secondary;
+				switch(secondary){
+					case "MintME_PUT":
+						smartGetElementById('liquidity_menu').style.display = "none";
+						smartGetElementById('derivatives_menu').style.display = "block";
+						bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_derivatives", "data": {"contract": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(pieceofshit){
+							smartGetElementById('DerivativesInformation').innerHTML = ["Strike price: ", copied_web3_conv2dec(pieceofshit[0][1], "ether"), ", expires on ", new Date(pieceofshit[0][0]).toString()].join("");
+							
+						});
+						break;
+					default:
+						smartGetElementById('liquidity_menu').style.display = "block";
+						smartGetElementById('derivatives_menu').style.display = "none";
+						smartGetElementById('DerivativesInformation').innerHTML = "Spot market";
+						break;
+				}
 				reloadChartsFromServer();
 			};
 		};
@@ -473,6 +490,7 @@ let _main = async function(){
 		bindPair("MintME", "1000x");
 		bindPair("MintME", "EUBI");
 		bindPair("MintME", "CLICK");
+		bindPair("MintME", "Haoma");
 		bindPair("MintME", "MS-Coin");
 		
 		//Dai base
@@ -483,6 +501,12 @@ let _main = async function(){
 		
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
+		
+		//Derivatives
+		bindPair("MintME", "MintME_PUT");
+		
+		//test
+		bindPair("shitcoin", "scamcoin");
 		
 		//END trading pair registrations
 		
@@ -497,7 +521,13 @@ let _main = async function(){
 		
 		smartGetElementById("addLiquidityButton").onclick = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_lp", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "amount0": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_base_amount").value, get_conv(selected_pri))), '", "amount1": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_quote_amount").value, get_conv(selected_sec))), '"}}]'].join("")), async function(){
-				toast("Order placed successfully!");
+				toast("Liquidity added successfully!");
+			});
+		};
+		
+		smartGetElementById("createDerivativesButton").onclick = async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_derivatives", "data": {"contract": "', escapeJSON(selected_sec), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("derivatives_amount").value, "ether")), '"}}]'].join("")), async function(){
+				toast("Derivatives underwritten successfully!");
 			});
 		};
 		
@@ -539,8 +569,12 @@ let _main = async function(){
 					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_MintME_CLICK:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					CLICK: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					LP_MintME_Haoma:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					Haoma: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
 					"LP_MintME_MS-Coin":  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
-					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
+					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					//NOTE: we use special shenanigans for derivatives.
+					MintME_PUT: {depositable: false, withdrawable: false, type: "lp", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
@@ -668,12 +702,14 @@ let _main = async function(){
 						const token2 = escapeJSON(token);
 						let selectedChain2 = undefined;
 						smartGetElementById("FinalizeTokenWithdrawal").disabled = true;
+						const mcn2 = tokenInfos[token].multichain == 0;
 						if(tokenInfos[token].type == 'lp'){
 							selectedChain2 = "";
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
+							smartGetElementById("MCDropdown2").style.display = "none";
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
-							if(tokenInfos[token].multichain == 0){
+							if(mcn2){
 								smartGetElementById("MCDropdown2").style.display = "none";
 							} else{
 								let MintME_selector = async function(){
@@ -691,7 +727,7 @@ let _main = async function(){
 								
 						}
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
-							if(selectedChain2 == undefined){
+							if(selectedChain2 == undefined && mcn2){
 								toast("Chain selector fault!");
 								return;
 							}
