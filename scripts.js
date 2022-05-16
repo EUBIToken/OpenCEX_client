@@ -464,7 +464,7 @@ let _main = async function(){
 						smartGetElementById('liquidity_menu').style.display = "none";
 						smartGetElementById('derivatives_menu').style.display = "block";
 						bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "get_derivatives", "data": {"contract": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(pieceofshit){
-							smartGetElementById('DerivativesInformation').innerHTML = ["Strike price: ", copied_web3_conv2dec(pieceofshit[0][1], "ether"), ", expires on ", new Date(pieceofshit[0][0]).toString()].join("");
+							smartGetElementById('DerivativesInformation').innerHTML = ["Strike price: ", copied_web3_conv2dec(pieceofshit[0][1], "ether"), ", expires on ", new Date(pieceofshit[0][0] * 1000).toString()].join("");
 							
 						});
 						break;
